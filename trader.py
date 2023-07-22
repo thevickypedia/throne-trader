@@ -6,7 +6,7 @@ import webull
 wb = webull.paper_webull()
 
 
-def get_buy_sell_signals(symbol):
+def get_buy_sell_hold_signals(symbol):
     # Fetch historical stock data using the 'get_bars' method from the 'webull' package
     bars = wb.get_bars(stock=symbol, interval='d', count=100)
 
@@ -17,37 +17,49 @@ def get_buy_sell_signals(symbol):
     stock_data['SMA_short'] = stock_data['close'].rolling(window=20).mean()
     stock_data['SMA_long'] = stock_data['close'].rolling(window=50).mean()
 
-    # Generate the buy signal
+    # Generate the buy, sell, and hold signals
     stock_data['Buy Signal'] = stock_data['SMA_short'] > stock_data['SMA_long']
-
-    # Generate the sell signal
     stock_data['Sell Signal'] = stock_data['SMA_short'] < stock_data['SMA_long']
+    stock_data['Hold Signal'] = ~(stock_data['Buy Signal'] | stock_data['Sell Signal'])
 
-    # Filter and display the buy and sell signals
+    # Filter and display the buy, sell, and hold signals
     buy_signals = stock_data[stock_data['Buy Signal']]
     sell_signals = stock_data[stock_data['Sell Signal']]
+    hold_signals = stock_data[stock_data['Hold Signal']]
 
-    print(f"Buy Signals: {len(buy_signals)}")
-    print(f"Sell Signals: {len(sell_signals)}")
+    assessment = {
+        "Buy": len(buy_signals),
+        "Sell": len(sell_signals),
+        "Hold": len(hold_signals)
+    }
+    for key, value in assessment.items():
+        print(f"{key} Signals:", value)
+
+    print(f"Algorithm's assessment: {max(assessment, key=assessment.get)}")
 
     buy_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): True
-        for timestamp in buy_signals['Buy Signal'].index.values
+        pandas.Timestamp(timestamp).to_pydatetime(): "Buy"
+        for timestamp in buy_signals.index.values
     }
     sell_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): False
-        for timestamp in sell_signals['Sell Signal'].index.values
+        pandas.Timestamp(timestamp).to_pydatetime(): "Sell"
+        for timestamp in sell_signals.index.values
     }
-    if len(sell_signals) > len(buy_signals):
-        print('ASSESSMENT: SELL')
-    else:
-        print('ASSESSMENT: BUY')
+    hold_signals_timestamped = {
+        pandas.Timestamp(timestamp).to_pydatetime(): "Hold"
+        for timestamp in hold_signals.index.values
+    }
+
+    all_signals = {**buy_signals_timestamped, **sell_signals_timestamped, **hold_signals_timestamped}
+
+    assert len(all_signals) == len(stock_data), "Not all bars were accounted for stock signals."
+
     return {
         k.strftime("%Y-%m-%d"): v
-        for k, v in dict(sorted({**buy_signals_timestamped, **sell_signals_timestamped}.items())).items()
+        for k, v in dict(sorted(all_signals.items())).items()
     }
 
 
 if __name__ == '__main__':
-    result = get_buy_sell_signals(symbol="AAPL")
+    result = get_buy_sell_hold_signals(symbol="EXPE")
     pprint.pprint(result)
