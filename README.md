@@ -1,4 +1,4 @@
-# trading-algorithm
+# TraderOfThrones
 
 ## Strategy: Breakout Trading
 

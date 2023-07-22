@@ -1,4 +1,5 @@
 import pprint
+from typing import Dict
 
 import pandas
 import webull
@@ -6,7 +7,7 @@ import webull
 wb = webull.paper_webull()
 
 
-def get_buy_sell_hold_signals(symbol):
+def get_buy_sell_hold_signals(symbol: str) -> Dict[str, str]:
     # Fetch historical stock data using the 'get_bars' method from the 'webull' package
     bars = wb.get_bars(stock=symbol, interval='d', count=100)
 
@@ -50,13 +51,16 @@ def get_buy_sell_hold_signals(symbol):
         for timestamp in hold_signals.index.values
     }
 
-    all_signals = {**buy_signals_timestamped, **sell_signals_timestamped, **hold_signals_timestamped}
+    all_signals = dict(sorted(
+        {**buy_signals_timestamped, **sell_signals_timestamped, **hold_signals_timestamped}.items(),
+        key=lambda x: x[0].timestamp()
+    ))
 
     assert len(all_signals) == len(stock_data), "Not all bars were accounted for stock signals."
 
     return {
         k.strftime("%Y-%m-%d"): v
-        for k, v in dict(sorted(all_signals.items())).items()
+        for k, v in all_signals.items()
     }
 
 
