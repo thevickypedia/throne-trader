@@ -32,6 +32,35 @@ When the short-term and long-term moving averages are close to each other or ove
 
 This strategy aims to capture trends by following moving average crossovers. It is important to consider the timeframes of the moving averages and adapt them based on the stock's volatility and your trading preferences.
 
+## 3. Strategy: Relative Strength Index (RSI)
+
+#### Indicators:
+Relative Strength Index (RSI) is used to measure the speed and change of price movements. It oscillates between 0 and 100 and is typically used to identify overbought or oversold conditions in a stock.
+
+#### Buy Signal:
+A buy signal is generated when the RSI value falls below 30, indicating that the stock is oversold and potentially undervalued. This suggests it might be a good time to buy.
+
+#### Sell Signal:
+A sell signal is generated when the RSI value rises above 70, indicating that the stock is overbought and potentially overvalued. This suggests it might be a good time to sell.
+
+#### Hold Signal:
+A hold signal is generated when the RSI value is between 30 and 70, indicating that the stock is in a neutral zone without any strong overbought or oversold conditions. This suggests holding the stock without making any immediate trading decisions.
+
+## 4. Strategy: Moving Average Convergence Divergence (MACD)
+
+#### Indicators:
+**MACD Line:** The Moving Average Convergence Divergence line, calculated as the difference between the short-term and long-term moving averages.
+**Signal Line:** The signal line is a smoothed moving average of the MACD line.
+
+#### Buy Signal:
+A buy signal is generated when the MACD line crosses above the signal line. This indicates a potential uptrend in the stock's price.
+
+#### Sell Signal:
+A sell signal is generated when the MACD line crosses below the signal line. This suggests a potential downtrend in the stock's price.
+
+#### Hold Signal:
+A hold signal is when the MACD line and signal line are close together, indicating a potential period of consolidation or uncertainty in the stock's price.
+
 ### Execution:
 When a buy signal is generated, place a market order to buy the stock.
 When a sell signal is generated, place a market order to sell the stock.
