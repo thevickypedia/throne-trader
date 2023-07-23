@@ -1,3 +1,5 @@
+import os
+import sys
 from datetime import datetime, timedelta
 from typing import Dict
 
@@ -9,8 +11,8 @@ import yfinance
 def classify(stock_data: pandas.DataFrame, short_window: int, long_window: int) -> Dict[str, str]:
     """Calculates short term moving average, long term moving average to generate the signals."""
     # Calculate short-term (e.g., 20-day) and long-term (e.g., 50-day) moving averages
-    stock_data['SMA_short'] = stock_data['close'].rolling(window=short_window).mean()
-    stock_data['SMA_long'] = stock_data['close'].rolling(window=long_window).mean()
+    stock_data['SMA_short'] = stock_data.get('close', stock_data.get('Close')).rolling(window=short_window).mean()
+    stock_data['SMA_long'] = stock_data.get('close', stock_data.get('Close')).rolling(window=long_window).mean()
 
     # Generate the buy, sell, and hold signals
     stock_data['buy'] = stock_data['SMA_short'] > stock_data['SMA_long']
@@ -114,5 +116,7 @@ def moving_average_crossover_strategy(symbol: str,
     # Fetch historical stock data using yfinance
     start = (datetime.now() - timedelta(days=years * 365)).strftime("%Y-%m-%d")
     end = datetime.now().strftime("%Y-%m-%d")
+    sys.stdout = open(os.devnull, 'w')  # block print
     stock_data = yfinance.download(symbol, start=start, end=end)
+    sys.stdout = sys.__stdout__  # release print
     return classify(stock_data, short_window, long_window)
