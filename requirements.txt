@@ -1,4 +1,7 @@
+numpy
 webull
 pandas
 yfinance
+tensorflow
+matplotlib
 scikit-learn
