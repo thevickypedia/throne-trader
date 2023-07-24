@@ -1,13 +1,13 @@
 from typing import Dict
 
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import GradientBoostingRegressor
 
 import squire
 
 
-def linear_regression_prediction(symbol: str) -> Dict[str, str]:
-    """Predict stock price using linear regression method.
+def gradient_boosting_prediction(symbol: str) -> Dict[str, str]:
+    """Predict stock price using a Gradient Boosting Regressor model.
 
     Args:
         symbol: Stock ticker.
@@ -21,8 +21,8 @@ def linear_regression_prediction(symbol: str) -> Dict[str, str]:
     x = np.arange(len(dates)).reshape(-1, 1)
     y = np.array(close_prices)
 
-    # Train a linear regression model
-    model = LinearRegression()
+    # Train a Gradient Boosting Regressor model
+    model = GradientBoostingRegressor()
     model.fit(x, y)
 
     # Predict the stock prices for the next two days
@@ -48,5 +48,5 @@ def linear_regression_prediction(symbol: str) -> Dict[str, str]:
 
 
 if __name__ == '__main__':
-    result = linear_regression_prediction("HLX")
+    result = gradient_boosting_prediction("HLX")
     print(result)
