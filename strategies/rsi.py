@@ -9,12 +9,14 @@ wb = webull.paper_webull()
 
 
 def get_rsi_signals(symbol: str,
-                    bar_count: int = 100) -> Dict[str, str]:
+                    bar_count: int = 100,
+                    simple: bool = False) -> Dict[str, str]:
     """Get buy, sell, and hold signals using the Relative Strength Index (RSI) strategy.
 
     Args:
         symbol: Stock ticker.
         bar_count: Number of bars from webull.
+        simple: Simply returns whether it's a buy, sell or hold.
 
     See Also:
         - A larger `bar_count` gives longer historical data for analysis.
@@ -45,4 +47,4 @@ def get_rsi_signals(symbol: str,
     stock_data['sell'] = (rsi > 70)
     stock_data['hold'] = ~(stock_data['buy'] | stock_data['sell'])
 
-    return squire.classify(stock_data)
+    return squire.classify(stock_data, simple)

@@ -61,6 +61,20 @@ A sell signal is generated when the MACD line crosses below the signal line. Thi
 #### Hold Signal:
 A hold signal is when the MACD line and signal line are close together, indicating a potential period of consolidation or uncertainty in the stock's price.
 
+## 5. Strategy: Bollinger Bands
+
+#### Indicators:
+Bollinger Bands: Bollinger Bands consist of three lines - the middle band (simple moving average), and two outer bands that are standard deviations away from the middle band. The middle band helps identify the trend, while the outer bands provide information on volatility.
+
+#### Buy Signal:
+A buy signal is generated when the stock price touches or crosses below the lower Bollinger Band and then moves back above it. This indicates that the stock may have been oversold and could potentially rebound.
+
+#### Sell Signal:
+A sell signal is generated when the stock price touches or crosses above the upper Bollinger Band and then moves back below it. This suggests that the stock may have been overbought and could potentially correct downwards.
+
+#### Hold Signal:
+A hold signal is when the stock price is within the range of the Bollinger Bands. This indicates that the stock is trading in a stable or sideways manner, and it might be best to wait for a clearer signal.
+
 ### Execution:
 When a buy signal is generated, place a market order to buy the stock.
 When a sell signal is generated, place a market order to sell the stock.

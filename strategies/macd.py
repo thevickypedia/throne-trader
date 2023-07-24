@@ -8,12 +8,15 @@ from . import squire
 wb = webull.paper_webull()
 
 
-def get_macd_signals(symbol: str, bar_count: int = 100) -> Dict[str, str]:
+def get_macd_signals(symbol: str,
+                     bar_count: int = 100,
+                     simple: bool = False) -> Dict[str, str]:
     """Get buy, sell, and hold signals using the Moving Average Convergence Divergence (MACD) strategy.
 
     Args:
         symbol: Stock ticker.
         bar_count: Number of bars from webull.
+        simple: Simply returns whether it's a buy, sell or hold.
 
     See Also:
         - A larger `bar_count` gives longer historical data for analysis.
@@ -54,4 +57,4 @@ def get_macd_signals(symbol: str, bar_count: int = 100) -> Dict[str, str]:
     stock_data['sell'] = stock_data['MACD'] < stock_data['Signal']
     stock_data['hold'] = ~(stock_data['buy'] | stock_data['sell'])
 
-    return squire.classify(stock_data)
+    return squire.classify(stock_data, simple)

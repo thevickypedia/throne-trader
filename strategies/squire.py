@@ -1,9 +1,9 @@
-from typing import Dict
+from typing import Dict, Union
 
 import pandas
 
 
-def classify(stock_data: pandas.DataFrame) -> Dict[str, str]:
+def classify(stock_data: pandas.DataFrame, simple: bool) -> Union[Dict[str, str], str]:
     """Calculates short term moving average, long term moving average to generate the signals."""
     # Filter buy, sell, and hold signals
     buy_signals = stock_data[stock_data['buy']]
@@ -36,6 +36,10 @@ def classify(stock_data: pandas.DataFrame) -> Dict[str, str]:
         "Sell": round(len(sell_signals) / all_signals_ct * 100, 2),
         "Hold": round(len(hold_signals) / all_signals_ct * 100, 2)
     }
+
+    if simple:
+        return max(assessment, key=assessment.get).upper()
+
     for key, value in assessment.items():
         print(f"{key} Signals:", f"{value}%")
 

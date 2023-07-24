@@ -6,10 +6,14 @@ import webull
 from . import squire
 
 
+wb = webull.paper_webull()
+
+
 def get_breakout_signals(symbol: str,
                          short_window: int = 20,
                          long_window: int = 50,
-                         bar_count: int = 100) -> Dict[str, str]:
+                         bar_count: int = 100,
+                         simple: bool = False) -> Dict[str, str]:
     """Get buy, sell and hold signals for a particular stock using breakout strategy.
 
     Args:
@@ -17,6 +21,7 @@ def get_breakout_signals(symbol: str,
         short_window: Short term moving average.
         long_window: Long term moving average.
         bar_count: Number of bars from webull.
+        simple: Simply returns whether it's a buy, sell or hold.
 
     See Also:
         - A larger `bar_count` gives longer historical data for trend analysis.
@@ -28,7 +33,7 @@ def get_breakout_signals(symbol: str,
         A dictionary of each day's buy, sell and hold signals.
     """
     # Fetch historical stock data using the 'get_bars' method from the 'webull' package
-    bars = webull.paper_webull().get_bars(stock=symbol, interval='d', count=bar_count)
+    bars = wb.get_bars(stock=symbol, interval='d', count=bar_count)
 
     # Create a DataFrame from the fetched data
     stock_data = pandas.DataFrame(bars)
@@ -42,4 +47,4 @@ def get_breakout_signals(symbol: str,
     stock_data['sell'] = stock_data['SMA_short'] < stock_data['SMA_long']
     stock_data['hold'] = ~(stock_data['buy'] | stock_data['sell'])
 
-    return squire.classify(stock_data)
+    return squire.classify(stock_data, simple)

@@ -10,7 +10,8 @@ from . import squire
 def get_crossover_signals(symbol: str,
                           short_window: int = 20,
                           long_window: int = 50,
-                          years: int = 1) -> Dict[str, str]:
+                          years: int = 1,
+                          simple: bool = False) -> Dict[str, str]:
     """Get buy, sell and hold signals for a particular stock using breakout strategy.
 
     Args:
@@ -18,6 +19,7 @@ def get_crossover_signals(symbol: str,
         short_window: Short term moving average.
         long_window: Long term moving average.
         years: Number of years for the historical data.
+        simple: Simply returns whether it's a buy, sell or hold.
 
     See Also:
         - | The number of years used to calculate moving averages impacts the frequency, responsiveness,
@@ -46,4 +48,4 @@ def get_crossover_signals(symbol: str,
     stock_data['sell'] = stock_data['SMA_short'] < stock_data['SMA_long']
     stock_data['hold'] = ~(stock_data['buy'] | stock_data['sell'])
 
-    return squire.classify(stock_data)
+    return squire.classify(stock_data, simple)
