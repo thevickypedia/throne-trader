@@ -1,3 +1,4 @@
 webull
 pandas
 yfinance
+scikit-learn
