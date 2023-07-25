@@ -1,0 +1,2 @@
+from .gradient_boosting import gradient_boosting_prediction
+from .linear_regression import linear_regression_prediction

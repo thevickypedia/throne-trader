@@ -3,7 +3,7 @@ from typing import Dict
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-import squire
+from helper import squire
 
 
 def linear_regression_prediction(symbol: str) -> Dict[str, str]:

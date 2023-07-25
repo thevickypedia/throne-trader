@@ -3,7 +3,7 @@ from typing import Dict
 import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 
-import squire
+from helper import squire
 
 
 def gradient_boosting_prediction(symbol: str) -> Dict[str, str]:

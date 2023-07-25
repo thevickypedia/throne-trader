@@ -3,7 +3,7 @@ from typing import Dict
 import pandas
 import webull
 
-from . import squire
+from helper import squire
 
 
 wb = webull.paper_webull()
