@@ -27,11 +27,11 @@ def get_financial_ratios_yfinance(symbol: str) -> pandas.DataFrame:
         raise ValueError(f"Error fetching financial ratios for {symbol}: {error}")
 
 
-def predict_signals_based_on_ratios(symbol: str,
-                                    pe_threshold: int = 20,
-                                    pb_threshold: int = 1.5,
-                                    payout_ratio_threshold_buy: int = 0.5,
-                                    payout_ratio_threshold_sell: int = 0.7) -> str:
+def get_financial_signals(symbol: str,
+                          pe_threshold: int = 20,
+                          pb_threshold: int = 1.5,
+                          payout_ratio_threshold_buy: int = 0.5,
+                          payout_ratio_threshold_sell: int = 0.7) -> str:
     """Predict buy/sell/hold signals based on financial ratios.
 
     Args:
@@ -40,6 +40,10 @@ def predict_signals_based_on_ratios(symbol: str,
         pb_threshold: Maximum Price-to-Book (P/B) ratio considered acceptable for a "Buy" signal.
         payout_ratio_threshold_buy: Maximum payout ratio considered acceptable for a "Buy" signal.
         payout_ratio_threshold_sell: Minimum payout ratio considered acceptable for a "Sell" signal.
+
+    See Also:
+        If you're inclined towards a buy, set `payout_ratio_threshold_buy` to 0.
+        If you're inclined towards a sell, set `payout_ratio_threshold_sell` to 1.
 
     Returns:
         str: Buy, Sell, or Hold signal.
@@ -51,7 +55,10 @@ def predict_signals_based_on_ratios(symbol: str,
     payout_ratio = financial_ratios_data['Payout Ratio'].iloc[0]
     pb_ratio = financial_ratios_data['Price to Book Ratio'].iloc[0]
 
-    if any(map(lambda x: x is None, (pe_ratio, payout_ratio, pb_ratio))):
+    if any(map(lambda x: x in (0, None), (payout_ratio_threshold_buy, payout_ratio_threshold_sell))) \
+            and pe_ratio and pb_ratio:
+        pass
+    elif any(map(lambda x: x is None, (pe_ratio, payout_ratio, pb_ratio))):
         print(f"PE ratio: {pe_ratio}")
         print(f"PB ratio: {pb_ratio}")
         print(f"Payout ratio: {payout_ratio}")

@@ -1,5 +1,6 @@
 import strategies
 import predictions
+import realtime
 
 TICKER = "AAPL"
 
@@ -24,6 +25,13 @@ def demo_predictions():
     print(f"Gradient Boosting Prediction: {gradient}")
 
 
+def demo_realtime():
+    ratios = realtime.get_financial_signals(symbol=TICKER, payout_ratio_threshold_buy=0,
+                                            payout_ratio_threshold_sell=0)
+    print(f"Current financials analysis: {ratios}")
+
+
 if __name__ == '__main__':
     demo_strategies()
     demo_predictions()
+    demo_realtime()
