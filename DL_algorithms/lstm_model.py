@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import numpy
 import pandas
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.layers import LSTM, Dense  # noqa
-from tensorflow.keras.models import Sequential  # noqa
+from tensorflow.keras.layers import LSTM, Dense  # noqa: F401
+from tensorflow.keras.models import Sequential  # noqa: F401
 
 from helper import squire
 
