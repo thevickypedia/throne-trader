@@ -24,26 +24,21 @@ jobs:
           python -m pip install --upgrade pip
           python -m pytest
 
-  install-and-create-packages:
-    needs: common_steps
+  create-and-check-package:
+    needs: [common_steps, pytest]
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
         run: |
           pip install build twine
       - name: Create packages
-        run: python -m build
-
-  twine-check:
-    needs: common_steps
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run twine check
-        run: twine check dist/*
+        run: |
+          python -m build
+          twine check dist/*
 
   upload-to-pypi:
     if: github.event_name == 'release'
-    needs: common_steps
+    needs: [common_steps, pytest, create-and-check-package]
     runs-on: ubuntu-latest
     steps:
       - name: Upload to pypi

@@ -2,6 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-orange)
 
+[![pypi-publish](https://github.com/thevickypedia/throne-trader/actions/workflows/python-publish.yml/badge.svg)](https://github.com/thevickypedia/throne-trader/actions/workflows/python-publish.yml)
 [![pages-build-deployment](https://github.com/thevickypedia/throne-trader/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/thevickypedia/throne-trader/actions/workflows/pages/pages-build-deployment)
 
 # ThroneTrader
