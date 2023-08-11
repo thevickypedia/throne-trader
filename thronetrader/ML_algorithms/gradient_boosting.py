@@ -1,4 +1,5 @@
-from typing import Dict
+import logging
+from typing import Dict, Union
 
 import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
@@ -6,11 +7,13 @@ from sklearn.ensemble import GradientBoostingRegressor
 from thronetrader.helper import squire
 
 
-def gradient_boosting_prediction(symbol: str, threshold: int = None) -> Dict[str, str]:
+def gradient_boosting_prediction(symbol: str, logger: logging.Logger, threshold: int = None) -> \
+        Union[Dict[str, str], None]:
     """Predict stock price using a Gradient Boosting Regressor model.
 
     Args:
         symbol: Stock ticker.
+        logger: Logger object.
         threshold: Limit used to classify predicted price differences into trading signals based on their significance.
 
     See Also:
@@ -27,7 +30,11 @@ def gradient_boosting_prediction(symbol: str, threshold: int = None) -> Dict[str
     """
     if threshold is None:
         threshold = 5
-    data = squire.get_historical_data(symbol=symbol)
+    try:
+        data = squire.get_historical_data(symbol=symbol)
+    except ValueError as error:
+        logger.error(error)
+        return
     dates, close_prices = zip(*data)
     x = np.arange(len(dates)).reshape(-1, 1)
     y = np.array(close_prices)
@@ -51,8 +58,3 @@ def gradient_boosting_prediction(symbol: str, threshold: int = None) -> Dict[str
         return signals | {"signal": "hold", "signal_rate": "neutral", "recommendation": "hold"}
     else:
         return signals | {"signal": "sell", "signal_rate": "strong sell", "recommendation": "hold"}
-
-
-if __name__ == '__main__':
-    result = gradient_boosting_prediction("HLX")
-    print(result)

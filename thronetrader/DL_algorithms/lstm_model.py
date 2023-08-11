@@ -2,8 +2,8 @@ import os
 from typing import Any, Tuple
 
 import matplotlib.pyplot as plt
-import numpy
-import pandas
+import numpy as np
+import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
 from thronetrader.helper import squire
@@ -27,13 +27,13 @@ def import_tensorflow() -> Tuple['LSTM', 'Dense', 'Sequential']:
 LSTM, Dense, Sequential = import_tensorflow()
 
 
-def prepare_data(data: pandas.DataFrame,
-                 look_back: int = 7) -> Tuple[numpy.ndarray, numpy.ndarray]:
+def prepare_data(data: pd.DataFrame,
+                 look_back: int = 7) -> Tuple[np.ndarray, np.ndarray]:
     """Prepare the data for LSTM model training.
 
     Args:
-        data (pandas.DataFrame): Historical stock data as a DataFrame.
-        look_back (int, optional): Number of look-back periods for the LSTM model. Defaults to 7.
+        data: Historical stock data as a DataFrame.
+        look_back: Number of look-back periods for the LSTM model. Defaults to 7.
 
     Returns:
         Tuple[numpy.ndarray, numpy.ndarray]:
@@ -46,8 +46,8 @@ def prepare_data(data: pandas.DataFrame,
         x_axis.append(scaled_data[i:i + look_back])
         y_axis.append(scaled_data[i + look_back])
 
-    x_axis, y_axis = numpy.array(x_axis), numpy.array(y_axis)
-    x_axis = numpy.reshape(x_axis, (x_axis.shape[0], x_axis.shape[1], 1))
+    x_axis, y_axis = np.array(x_axis), np.array(y_axis)
+    x_axis = np.reshape(x_axis, (x_axis.shape[0], x_axis.shape[1], 1))
 
     return x_axis, y_axis
 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     y_test = scaler.inverse_transform(y_test)
 
     # Evaluate the model (you can use appropriate metrics based on your needs)
-    mse = numpy.mean((y_pred - y_test) ** 2)
+    mse = np.mean((y_pred - y_test) ** 2)
     print("Mean Squared Error:", mse)
 
     # Plot the predictions and actual prices

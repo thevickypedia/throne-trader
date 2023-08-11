@@ -1,5 +1,5 @@
-import numpy
-import pandas
+import numpy as np
+import pandas as pd
 
 from thronetrader.DL_algorithms import lstm_model
 from thronetrader.helper import squire
@@ -35,7 +35,7 @@ class Transformer:
         self.batch_size = batch_size
         self.historical_data = self.training_dataset()
 
-    def training_dataset(self) -> pandas.DataFrame:
+    def training_dataset(self) -> pd.DataFrame:
         """Download training dataset for the duration of training period specified.
 
         Returns:
@@ -44,7 +44,7 @@ class Transformer:
         """
         return squire.get_historical_data(symbol=self.symbol, years=self.training_period, df=True)
 
-    def validation_dataset(self) -> pandas.DataFrame:
+    def validation_dataset(self) -> pd.DataFrame:
         """Download validation dataset for the duration of validation period specified.
 
         Returns:
@@ -53,7 +53,7 @@ class Transformer:
         """
         return squire.get_historical_data(self.symbol, years=self.validation_period, df=True)
 
-    def generate_predictions(self) -> numpy.ndarray:
+    def generate_predictions(self) -> np.ndarray:
         """Prepare the data, build the LSTM model, train the model and predict future stock prices.
 
         Returns:
@@ -77,7 +77,7 @@ class Transformer:
         # Make predictions for the future period
         return model.predict(future_x)
 
-    def transform(self) -> numpy.ndarray:
+    def transform(self) -> np.ndarray:
         """Inverse transform the predictions to get the actual stock prices.
 
         Returns:
@@ -88,7 +88,7 @@ class Transformer:
         future_predictions = self.generate_predictions()
         return lstm_model.scaler.inverse_transform(future_predictions)
 
-    def future_prices(self) -> pandas.Series:
+    def future_prices(self) -> pd.Series:
         """Get future predictions mapped to the future dates.
 
         Returns:
@@ -96,9 +96,9 @@ class Transformer:
             Returns the future predictions mapped to the dates as a Series.
         """
         transformed_future_predictions = self.transform()
-        future_dates = pandas.date_range(start=self.historical_data.index[-1],
-                                         periods=len(transformed_future_predictions))
-        return pandas.Series(data=transformed_future_predictions[:, 0], index=future_dates)
+        future_dates = pd.date_range(start=self.historical_data.index[-1],
+                                     periods=len(transformed_future_predictions))
+        return pd.Series(data=transformed_future_predictions[:, 0], index=future_dates)
 
 
 if __name__ == '__main__':

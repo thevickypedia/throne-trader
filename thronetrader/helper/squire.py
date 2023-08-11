@@ -2,15 +2,25 @@ import logging
 import os
 import sys
 from datetime import datetime, timedelta
-from typing import List, Tuple, Union
+from typing import List, Tuple, Union, NoReturn
 
-import pandas
-import yfinance
+import pandas as pd
+import yfinance as yf
+
+
+def block_print() -> NoReturn:
+    """Block print statements in console/terminal."""
+    sys.stdout = open(os.devnull, 'w')
+
+
+def release_print() -> NoReturn:
+    """Allow print statements to be displayed in console/terminal."""
+    sys.stdout = sys.__stdout__  # release print
 
 
 def get_historical_data(symbol: str,
                         years: int = 1,
-                        df: bool = False) -> Union[List[Tuple[str, float]], pandas.DataFrame]:
+                        df: bool = False) -> Union[List[Tuple[str, float]], pd.DataFrame]:
     """Download historical stock data for a given symbol and date range.
 
     Args:
@@ -24,16 +34,21 @@ def get_historical_data(symbol: str,
     """
     start = (datetime.now() - timedelta(days=years * 365)).strftime("%Y-%m-%d")
     end = datetime.now().strftime("%Y-%m-%d")
-    sys.stdout = open(os.devnull, 'w')  # block print
-    stock_data = yfinance.download(symbol, start=start, end=end)
-    sys.stdout = sys.__stdout__  # release print
+    try:
+        block_print()
+        stock_data = yf.download(symbol, start=start, end=end)
+        release_print()
+    except Exception as error:
+        raise ValueError(error)
+    if stock_data.empty:
+        raise ValueError("Empty dataframe was downloaded.")
     if df:
         return stock_data
     return [(date.strftime("%Y-%m-%d"), close_price) for date, close_price in
             zip(stock_data.index, stock_data['Close'])]
 
 
-def get_bars(symbol: str, bar_count: int, days: int) -> pandas.DataFrame:
+def get_bars(symbol: str, bar_count: int, days: int) -> pd.DataFrame:
     """Download historical stock data for a given symbol and date range.
 
     Args:
@@ -45,13 +60,18 @@ def get_bars(symbol: str, bar_count: int, days: int) -> pandas.DataFrame:
         pandas.DataFrame:
         Returns the historical data as a DataFrame.
     """
-    sys.stdout = open(os.devnull, 'w')  # block print
-    df = yfinance.download(symbol, period=f"{bar_count}d", interval=f"{days}d")
-    sys.stdout = sys.__stdout__  # release print
+    try:
+        block_print()
+        df = yf.download(symbol, period=f"{bar_count}d", interval=f"{days}d")
+        release_print()
+        if df.empty:
+            raise ValueError("Empty dataframe was downloaded.")
+    except Exception as error:
+        raise ValueError(error)
     return df
 
 
-def classify(stock_data: pandas.DataFrame, logger: logging.Logger) -> str:
+def classify(stock_data: pd.DataFrame, logger: logging.Logger) -> str:
     """Calculates short term moving average, long term moving average to generate the signals."""
     # Filter buy, sell, and hold signals
     buy_signals = stock_data[stock_data['buy']]
@@ -59,15 +79,15 @@ def classify(stock_data: pandas.DataFrame, logger: logging.Logger) -> str:
     hold_signals = stock_data[stock_data['hold']]
 
     buy_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): "buy"
+        pd.Timestamp(timestamp).to_pydatetime(): "buy"
         for timestamp in buy_signals.index.values
     }
     sell_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): "sell"
+        pd.Timestamp(timestamp).to_pydatetime(): "sell"
         for timestamp in sell_signals.index.values
     }
     hold_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): "hold"
+        pd.Timestamp(timestamp).to_pydatetime(): "hold"
         for timestamp in hold_signals.index.values
     }
 

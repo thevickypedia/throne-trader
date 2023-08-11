@@ -1,10 +1,12 @@
 import logging
-from typing import Dict, List, Union
+from typing import Dict, List, Tuple, Union
+
+import pandas as pd
 
 from thronetrader.helper.logger import default_logger
 from thronetrader.helper.wrapper import wraps
 from thronetrader.ML_algorithms import gradient_boosting, linear_regression
-from thronetrader.realtime import financial, insider
+from thronetrader.realtime import financial, insider, volume
 from thronetrader.strategies import (bollinger_bands, breakout, crossover,
                                      macd, rsi)
 
@@ -39,11 +41,19 @@ class Predictions(Trader):
 
     @wraps(gradient_boosting.gradient_boosting_prediction)
     def gradient_boosting_prediction(self, threshold: int = None) -> Dict[str, str]:  # noqa: D102
-        return gradient_boosting.gradient_boosting_prediction(symbol=self.symbol, threshold=threshold)
+        return gradient_boosting.gradient_boosting_prediction(
+            symbol=self.symbol,
+            threshold=threshold,
+            logger=self.logger
+        )
 
     @wraps(linear_regression.linear_regression_prediction)
     def linear_regression_prediction(self, threshold: int = None) -> Dict[str, str]:  # noqa: D102
-        return linear_regression.linear_regression_prediction(symbol=self.symbol, threshold=threshold)
+        return linear_regression.linear_regression_prediction(
+            symbol=self.symbol,
+            threshold=threshold,
+            logger=self.logger
+        )
 
 
 class RealTimeSignals(Trader):
@@ -68,6 +78,10 @@ class RealTimeSignals(Trader):
     @wraps(insider.get_insider_signals)
     def get_insider_signals(self) -> List[Dict[str, Union[str, int, float]]]:  # noqa: D102
         return list(insider.get_insider_signals(symbol=self.symbol))
+
+    @wraps(volume.get_trading_volume)
+    def get_trading_volume(self, hours: int = 48) -> Tuple[pd.Series, pd.Series]:  # noqa: D102
+        return volume.get_trading_volume(symbol=self.symbol, hours=hours, logger=self.logger)
 
 
 class StrategicSignals(Trader):

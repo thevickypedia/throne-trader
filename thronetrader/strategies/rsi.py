@@ -24,8 +24,11 @@ def get_rsi_signals(symbol: str,
         str:
         Analysis of buy/hold/sell.
     """
-    # Fetch historical stock data
-    stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
+    try:
+        stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
+    except ValueError as error:
+        logger.error(error)
+        return "undetermined"
 
     # Calculate the Relative Strength Index (RSI)
     delta = stock_data['Close'].diff()

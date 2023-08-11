@@ -27,8 +27,11 @@ def get_breakout_signals(symbol: str, logger: logging.Logger,
         str:
         Analysis of buy/hold/sell.
     """
-    # Fetch historical stock data
-    stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
+    try:
+        stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
+    except ValueError as error:
+        logger.error(error)
+        return "undetermined"
 
     # Calculate short-term (e.g., 20-day) and long-term (e.g., 50-day) moving averages
     stock_data['SMA_short'] = stock_data['Close'].rolling(window=short_window).mean()

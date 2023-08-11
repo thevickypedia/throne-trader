@@ -1,22 +1,20 @@
 import logging
-from typing import Union
 
-import pandas
-import yfinance
+import pandas as pd
+import yfinance as yf
 
 
-def get_financial_ratios_yfinance(symbol: str, logger: logging.Logger) -> pandas.DataFrame:
+def get_financial_ratios_yfinance(symbol: str) -> pd.DataFrame:
     """Get financial ratios for a given stock symbol using yfinance.
 
     Args:
         symbol: Stock ticker.
-        logger: Logger object.
 
     Returns:
         pandas.DataFrame: DataFrame containing financial ratios.
     """
     try:
-        financial_ratios_data = yfinance.Ticker(symbol).info
+        financial_ratios_data = yf.Ticker(symbol).info
         financial_ratios = {
             'PE Ratio': financial_ratios_data.get('trailingPE', None),
             'Forward PE Ratio': financial_ratios_data.get('forwardPE', None),
@@ -26,16 +24,16 @@ def get_financial_ratios_yfinance(symbol: str, logger: logging.Logger) -> pandas
             'Payout Ratio': financial_ratios_data.get('payoutRatio', None),
             'Profit Margin': financial_ratios_data.get('profitMargins', None),
         }
-        return pandas.DataFrame([financial_ratios])
+        return pd.DataFrame([financial_ratios])
     except Exception as error:
-        logger.error("Error fetching financial ratios for %s: %s", symbol, error)
+        raise ValueError(error)
 
 
 def get_financial_signals(symbol: str, logger: logging.Logger,
                           pe_threshold: int = 20,
                           pb_threshold: int = 1.5,
                           payout_ratio_threshold_buy: int = 0.5,
-                          payout_ratio_threshold_sell: int = 0.7) -> Union[str, None]:
+                          payout_ratio_threshold_sell: int = 0.7) -> str:
     """Predict buy/sell/hold signals based on financial ratios.
 
     Args:
@@ -53,9 +51,11 @@ def get_financial_signals(symbol: str, logger: logging.Logger,
     Returns:
         str: Buy, Sell, or Hold signal.
     """
-    financial_ratios_data = get_financial_ratios_yfinance(symbol=symbol, logger=logger)
-    if not financial_ratios_data:
-        return
+    try:
+        financial_ratios_data = get_financial_ratios_yfinance(symbol=symbol)
+    except ValueError as error:
+        logger.error("Error fetching financial ratios for %s: %s", symbol, error)
+        return "undetermined"
 
     # Extract the financial ratios values from the DataFrame
     pe_ratio = financial_ratios_data['PE Ratio'].iloc[0]

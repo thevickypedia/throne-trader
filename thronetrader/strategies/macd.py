@@ -35,8 +35,11 @@ def get_macd_signals(symbol: str,
         str:
         Analysis of buy/hold/sell.
     """
-    # Fetch historical stock data
-    stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
+    try:
+        stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
+    except ValueError as error:
+        logger.error(error)
+        return "undetermined"
 
     # Calculate the short-term (e.g., 12-day) and long-term (e.g., 26-day) Exponential Moving Averages (EMAs)
     stock_data['EMA_short'] = stock_data['Close'].ewm(span=12, adjust=False).mean()

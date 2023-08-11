@@ -1,4 +1,5 @@
-from typing import Dict
+import logging
+from typing import Dict, Union
 
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -6,11 +7,13 @@ from sklearn.linear_model import LinearRegression
 from thronetrader.helper import squire
 
 
-def linear_regression_prediction(symbol: str, threshold: int = None) -> Dict[str, str]:
+def linear_regression_prediction(symbol: str, logger: logging.Logger, threshold: int = None) -> \
+        Union[Dict[str, str], None]:
     """Predict stock price using linear regression method.
 
     Args:
         symbol: Stock ticker.
+        logger: Logger object.
         threshold: Limit used to classify predicted price differences into trading signals based on their significance.
 
     See Also:
@@ -25,9 +28,13 @@ def linear_regression_prediction(symbol: str, threshold: int = None) -> Dict[str
         Dict[str, str]:
         A dictionary containing the prediction signal for the next two days.
     """
+    try:
+        data = squire.get_historical_data(symbol=symbol)
+    except ValueError as error:
+        logger.error(error)
+        return
     if threshold is None:
         threshold = 5
-    data = squire.get_historical_data(symbol=symbol)
     dates, close_prices = zip(*data)
     x = np.arange(len(dates)).reshape(-1, 1)
     y = np.array(close_prices)
@@ -51,8 +58,3 @@ def linear_regression_prediction(symbol: str, threshold: int = None) -> Dict[str
         return signals | {"signal": "hold", "signal_rate": "neutral", "recommendation": "hold"}
     else:
         return signals | {"signal": "sell", "signal_rate": "strong sell", "recommendation": "hold"}
-
-
-if __name__ == '__main__':
-    result = linear_regression_prediction("HLX")
-    print(result)
