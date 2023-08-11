@@ -1,4 +1,10 @@
-# Throne Trader
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=Python)](https://python.org)
+
+![Python](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-orange)
+
+[![pages-build-deployment](https://github.com/thevickypedia/throne-trader/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/thevickypedia/throne-trader/actions/workflows/pages/pages-build-deployment)
+
+# ThroneTrader
 
 ## Predictions
 [README.md][predictions]

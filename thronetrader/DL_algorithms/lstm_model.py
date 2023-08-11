@@ -1,15 +1,30 @@
+import os
 from typing import Any, Tuple
 
 import matplotlib.pyplot as plt
 import numpy
 import pandas
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.layers import LSTM, Dense  # noqa: F401
-from tensorflow.keras.models import Sequential  # noqa: F401
 
 from thronetrader.helper import squire
 
 scaler = MinMaxScaler(feature_range=(0, 1))
+
+
+def import_tensorflow() -> Tuple['LSTM', 'Dense', 'Sequential']:
+    """Imports tensorflow objects, suppressing the logger information.
+
+    Returns:
+        Tuple[LSTM, Dense, Sequential]:
+        Returns a tuple of LSTM, Dense and Sequential objects.
+    """
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # TensorFlow to only display warning messages (level 2) and higher
+    from tensorflow.keras.layers import LSTM, Dense  # noqa: F401
+    from tensorflow.keras.models import Sequential  # noqa: F401
+    return LSTM, Dense, Sequential
+
+
+LSTM, Dense, Sequential = import_tensorflow()
 
 
 def prepare_data(data: pandas.DataFrame,

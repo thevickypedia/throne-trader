@@ -18,7 +18,7 @@ def get_macd_signals(symbol: str, logger: logging.Logger,
         bar_count: Number of bars from webull.
 
     See Also:
-        - A larger `bar_count` gives longer historical data for analysis.
+        - A larger ``bar_count`` gives longer historical data for analysis.
         - A smaller count focuses on recent data for short-term signals.
         - Experiment and backtest to find the best fit for your approach.
         - | Short-term EMA (12-day EMA): A smaller span value for the short-term EMA means that it reacts more quickly

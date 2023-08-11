@@ -47,8 +47,8 @@ def get_financial_signals(symbol: str, logger: logging.Logger,
         payout_ratio_threshold_sell: Minimum payout ratio considered acceptable for a "Sell" signal.
 
     See Also:
-        If you're inclined towards a buy, set `payout_ratio_threshold_buy` to 0.
-        If you're inclined towards a sell, set `payout_ratio_threshold_sell` to 1.
+        - If you're inclined towards a buy, set ``payout_ratio_threshold_buy`` to 0.
+        - If you're inclined towards a sell, set ``payout_ratio_threshold_sell`` to 1.
 
     Returns:
         str: Buy, Sell, or Hold signal.

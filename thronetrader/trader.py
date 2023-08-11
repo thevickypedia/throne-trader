@@ -4,7 +4,7 @@ from typing import Dict, List, Union
 
 from thronetrader.helper.logger import default_logger
 from thronetrader.helper.wrapper import wraps
-from thronetrader.predictions import gradient_boosting, linear_regression
+from thronetrader.ML_algorithms import gradient_boosting, linear_regression
 from thronetrader.realtime import financial, insider
 from thronetrader.strategies import (bollinger_bands, breakout, crossover,
                                      macd, rsi)

@@ -18,7 +18,7 @@ def get_rsi_signals(symbol: str, logger: logging.Logger,
         bar_count: Number of bars from webull.
 
     See Also:
-        - A larger `bar_count` gives longer historical data for analysis.
+        - A larger ``bar_count`` gives longer historical data for analysis.
         - A smaller count focuses on recent data for short-term signals.
         - Experiment and backtest to find the best fit for your approach.
 

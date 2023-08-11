@@ -13,4 +13,4 @@ mv _build/html/* ../docs && mv README.md ../docs && rm -rf fileio logs  # Move t
 # The existence of this file tells GitHub Pages not to run the published files through Jekyll.
 # This is important since Jekyll will discard any files that begin with _
 touch ../docs/.nojekyll
-cp static.css ../docs/_static
+[ -f "static.css" ] && mv "static.css" ../docs/_static  # Move static.css if present
