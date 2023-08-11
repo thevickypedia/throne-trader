@@ -20,6 +20,16 @@ repos:
       -
         id: isort
 
+  - repo: local
+    hooks:
+      -
+        id: pytest
+        name: pytest
+        entry: bash -c 'python -m pytest tests/ && rm -rf .pytest_cache && cd ..'
+        language: system
+        pass_filenames: false
+        always_run: true
+
   -
     repo: local
     hooks:

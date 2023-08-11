@@ -61,6 +61,18 @@
 <p>Remember to thoroughly backtest and paper trade any strategy before using real funds, and always exercise caution and risk management when trading stocks.</p>
 </section>
 </section>
+<section id="linting">
+<h2>Linting<a class="headerlink" href="#linting" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">PreCommit</span></code> will ensure linting, and the doc creation are run on every commit.</p>
+<p><strong>Requirement</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">sphinx</span><span class="o">==</span><span class="m">5</span>.1.1<span class="w"> </span>pre-commit<span class="w"> </span>recommonmark
+</pre></div>
+</div>
+<p><strong>Usage</strong></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -80,6 +92,7 @@
 <li><a class="reference internal" href="#disclaimer">Disclaimer:</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#linting">Linting</a></li>
 </ul>
 </li>
 </ul>
