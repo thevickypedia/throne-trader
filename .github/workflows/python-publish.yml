@@ -6,7 +6,7 @@ on:
     types: [published]
 
 jobs:
-  common_steps:
+  vanguard:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,17 +15,18 @@ jobs:
         with:
           python-version: '3.x'
 
-  pytest:
-    needs: common_steps
+  trial-by-pytest:
+    needs: vanguard
     runs-on: ubuntu-latest
     steps:
       - name: Run pytest
         run: |
           python -m pip install --upgrade pip
-          python -m pytest
+          pip install pytest
+          python -m pytest ./tests
 
-  create-and-check-package:
-    needs: [common_steps, pytest]
+  forge-artifact:
+    needs: trial-by-pytest
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
@@ -36,9 +37,9 @@ jobs:
           python -m build
           twine check dist/*
 
-  upload-to-pypi:
+  coronation:
     if: github.event_name == 'release'
-    needs: [common_steps, pytest, create-and-check-package]
+    needs: forge-artifact
     runs-on: ubuntu-latest
     steps:
       - name: Upload to pypi
