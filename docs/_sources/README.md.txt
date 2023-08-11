@@ -6,30 +6,16 @@
 
 # ThroneTrader
 
-## Predictions
-[README.md][predictions]
+### [Deep Learning Algorithms][dl_trade]
 
-## Strategies
-[README.md][strategies]
+### [Machine Learning Algorithms][ml_trade]
 
-## Deep Learning Algorithms
-[README.md][deep_trade]
+### [Real Time Signals][realtime]
 
-### Disclaimer:
+### [Strategic Signals][strategies]
+
+## Disclaimer:
 Remember to thoroughly backtest and paper trade any strategy before using real funds, and always exercise caution and risk management when trading stocks.
-
-## Linting
-`PreCommit` will ensure linting, and the doc creation are run on every commit.
-
-**Requirement**
-```shell
-pip install sphinx==5.1.1 pre-commit recommonmark pytest
-```
-
-**Usage**
-```shell
-pre-commit run --all-files
-```
 
 <details>
 <summary>Why <code>throne-trader</code>?</summary>
@@ -46,6 +32,33 @@ much like the characters in the show strive to sit upon the Iron Throne.</i>
 
 </details>
 
-[predictions]: https://github.com/thevickypedia/throne-trader/blob/main/PREDICTIONS.md
-[strategies]: https://github.com/thevickypedia/throne-trader/blob/main/STRATEGIES.md
-[deep_trade]: https://github.com/thevickypedia/throne-trader/blob/main/DL_ALGORITHMS.md
+## Linting
+`PreCommit` will ensure linting, and the doc creation are run on every commit.
+
+**Requirement**
+```shell
+pip install sphinx==5.1.1 pre-commit recommonmark pytest
+```
+
+**Usage**
+```shell
+pre-commit run --all-files
+```
+
+## Runbook
+[![made-with-sphinx-doc](https://img.shields.io/badge/Code%20Docs-Sphinx-1f425f.svg)](https://www.sphinx-doc.org/en/master/man/sphinx-autogen.html)
+
+[GitHub Pages][docs]
+
+## License & copyright
+
+&copy; Vignesh Rao
+
+Licensed under the [MIT License][license]
+
+[dl_trade]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/DL_ALGORITHMS.md
+[ml_trade]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/ML_ALGORITHMS.md
+[realtime]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/REALTIME.md
+[strategies]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/STRATEGIES.md
+[license]: https://github.com/thevickypedia/throne-trader/blob/main/LICENSE
+[docs]: https://thevickypedia.github.io/throne-trader/

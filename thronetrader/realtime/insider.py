@@ -54,7 +54,7 @@ def aggregate_data(transactions: List[Dict[str, Union[str, int, float]]]) -> Lis
 
 
 def get_insider_signals(symbol: str) -> Generator[Dict[str, Union[str, int, float]]]:
-    """Get insider signals for a particular transaction (if found).
+    """Get insider signals for a particular stock ticker (if found).
 
     Args:
         symbol: Stock ticker.

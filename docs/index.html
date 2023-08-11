@@ -49,10 +49,14 @@
 <p class="caption" role="heading"><span class="caption-text">Read Me:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="README.html">ThroneTrader</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="README.html#predictions">Predictions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="README.html#strategies">Strategies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#deep-learning-algorithms">Deep Learning Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#machine-learning-algorithms">Machine Learning Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#real-time-signals">Real Time Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#strategic-signals">Strategic Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#disclaimer">Disclaimer:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#linting">Linting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#runbook">Runbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#license-copyright">License &amp; copyright</a></li>
 </ul>
 </li>
 </ul>
@@ -226,7 +230,7 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="thronetrader.trader.RealTimeSignals.get_insider_signals">
 <span class="sig-name descname"><span class="pre">get_insider_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.trader.RealTimeSignals.get_insider_signals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get insider signals for a particular transaction (if found).</p>
+<dd><p>Get insider signals for a particular stock ticker (if found).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>symbol</strong> – Stock ticker.</p>
@@ -724,7 +728,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="thronetrader.realtime.insider.get_insider_signals">
 <span class="sig-prename descclassname"><span class="pre">thronetrader.realtime.insider.</span></span><span class="sig-name descname"><span class="pre">get_insider_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.realtime.insider.get_insider_signals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get insider signals for a particular transaction (if found).</p>
+<dd><p>Get insider signals for a particular stock ticker (if found).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>symbol</strong> – Stock ticker.</p>
