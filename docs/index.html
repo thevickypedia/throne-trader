@@ -259,14 +259,15 @@
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_bollinger_bands_signals">
-<span class="sig-name descname"><span class="pre">get_bollinger_bands_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_bollinger_bands_signals" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_bollinger_bands_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_bollinger_bands_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get buy, sell, and hold signals using the Bollinger Bands strategy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from Webull.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from Yahoo Finance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 <li><p><strong>window</strong> – The window size for the moving average.</p></li>
 <li><p><strong>num_std</strong> – The number of standard deviations for the Bollinger Bands.</p></li>
 </ul>
@@ -282,23 +283,24 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_breakout_signals">
-<span class="sig-name descname"><span class="pre">get_breakout_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_breakout_signals" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_breakout_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_breakout_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get buy, sell and hold signals for a particular stock using breakout strategy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 <li><p><strong>short_window</strong> – Short term moving average.</p></li>
 <li><p><strong>long_window</strong> – Long term moving average.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code> gives longer historical data for trend analysis.</p></li>
+<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code>/<code class="docutils literal notranslate"><span class="pre">days</span></code> gives longer historical data for trend analysis.</p></li>
 <li><p>A smaller count focuses on recent data for short-term signals.</p></li>
 <li><p>Experiment and backtest to find the best fit for your approach.</p></li>
 </ul>
@@ -360,14 +362,15 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul>
-<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code> gives longer historical data for analysis.</p></li>
+<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code>/<code class="docutils literal notranslate"><span class="pre">days</span></code> gives longer historical data for trend analysis.</p></li>
 <li><p>A smaller count focuses on recent data for short-term signals.</p></li>
 <li><p>Experiment and backtest to find the best fit for your approach.</p></li>
 <li><div class="line-block">
@@ -411,14 +414,15 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code> gives longer historical data for analysis.</p></li>
+<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code>/<code class="docutils literal notranslate"><span class="pre">days</span></code> gives longer historical data for trend analysis.</p></li>
 <li><p>A smaller count focuses on recent data for short-term signals.</p></li>
 <li><p>Experiment and backtest to find the best fit for your approach.</p></li>
 </ul>
@@ -840,14 +844,15 @@
 <span id="bollinger-bands"></span><h1>Bollinger Bands<a class="headerlink" href="#module-thronetrader.strategies.bollinger_bands" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="thronetrader.strategies.bollinger_bands.get_bollinger_bands_signals">
-<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.bollinger_bands.</span></span><span class="sig-name descname"><span class="pre">get_bollinger_bands_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.bollinger_bands.get_bollinger_bands_signals" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.bollinger_bands.</span></span><span class="sig-name descname"><span class="pre">get_bollinger_bands_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.bollinger_bands.get_bollinger_bands_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get buy, sell, and hold signals using the Bollinger Bands strategy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from Webull.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from Yahoo Finance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 <li><p><strong>window</strong> – The window size for the moving average.</p></li>
 <li><p><strong>num_std</strong> – The number of standard deviations for the Bollinger Bands.</p></li>
 </ul>
@@ -866,23 +871,24 @@
 <span id="breakout"></span><h1>Breakout<a class="headerlink" href="#module-thronetrader.strategies.breakout" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="thronetrader.strategies.breakout.get_breakout_signals">
-<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.breakout.</span></span><span class="sig-name descname"><span class="pre">get_breakout_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.breakout.get_breakout_signals" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.breakout.</span></span><span class="sig-name descname"><span class="pre">get_breakout_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.breakout.get_breakout_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get buy, sell and hold signals for a particular stock using breakout strategy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 <li><p><strong>short_window</strong> – Short term moving average.</p></li>
 <li><p><strong>long_window</strong> – Long term moving average.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code> gives longer historical data for trend analysis.</p></li>
+<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code>/<code class="docutils literal notranslate"><span class="pre">days</span></code> gives longer historical data for trend analysis.</p></li>
 <li><p>A smaller count focuses on recent data for short-term signals.</p></li>
 <li><p>Experiment and backtest to find the best fit for your approach.</p></li>
 </ul>
@@ -943,21 +949,22 @@
 <span id="moving-average-convergence-divergence-indicator"></span><h1>Moving Average Convergence/Divergence Indicator<a class="headerlink" href="#module-thronetrader.strategies.macd" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="thronetrader.strategies.macd.get_macd_signals">
-<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.macd.</span></span><span class="sig-name descname"><span class="pre">get_macd_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.macd.get_macd_signals" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.macd.</span></span><span class="sig-name descname"><span class="pre">get_macd_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.macd.get_macd_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get buy, sell, and hold signals using the Moving Average Convergence Divergence (MACD) strategy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul>
-<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code> gives longer historical data for analysis.</p></li>
+<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code>/<code class="docutils literal notranslate"><span class="pre">days</span></code> gives longer historical data for trend analysis.</p></li>
 <li><p>A smaller count focuses on recent data for short-term signals.</p></li>
 <li><p>Experiment and backtest to find the best fit for your approach.</p></li>
 <li><div class="line-block">
@@ -997,21 +1004,22 @@
 <span id="relative-strength-index"></span><h1>Relative Strength Index<a class="headerlink" href="#module-thronetrader.strategies.rsi" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="thronetrader.strategies.rsi.get_rsi_signals">
-<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.rsi.</span></span><span class="sig-name descname"><span class="pre">get_rsi_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.rsi.get_rsi_signals" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">thronetrader.strategies.rsi.</span></span><span class="sig-name descname"><span class="pre">get_rsi_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.strategies.rsi.get_rsi_signals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get buy, sell, and hold signals using the Relative Strength Index (RSI) strategy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>symbol</strong> – Stock ticker.</p></li>
 <li><p><strong>logger</strong> – Logger object.</p></li>
-<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
 </ul>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <ul class="simple">
-<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code> gives longer historical data for analysis.</p></li>
+<li><p>A larger <code class="docutils literal notranslate"><span class="pre">bar_count</span></code>/<code class="docutils literal notranslate"><span class="pre">days</span></code> gives longer historical data for trend analysis.</p></li>
 <li><p>A smaller count focuses on recent data for short-term signals.</p></li>
 <li><p>Experiment and backtest to find the best fit for your approach.</p></li>
 </ul>

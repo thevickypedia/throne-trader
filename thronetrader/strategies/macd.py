@@ -1,24 +1,22 @@
 import logging
 
-import pandas as pd
-import webull
-
 from thronetrader.helper import squire
 
-wb = webull.paper_webull()
 
-
-def get_macd_signals(symbol: str, logger: logging.Logger,
-                     bar_count: int = 100) -> str:
+def get_macd_signals(symbol: str,
+                     logger: logging.Logger,
+                     bar_count: int = 100,
+                     days: int = 1) -> str:
     """Get buy, sell, and hold signals using the Moving Average Convergence Divergence (MACD) strategy.
 
     Args:
         symbol: Stock ticker.
         logger: Logger object.
-        bar_count: Number of bars from webull.
+        bar_count: Number of bars from yfinance.
+        days: Number of days to consider.
 
     See Also:
-        - A larger ``bar_count`` gives longer historical data for analysis.
+        - A larger ``bar_count``/``days`` gives longer historical data for trend analysis.
         - A smaller count focuses on recent data for short-term signals.
         - Experiment and backtest to find the best fit for your approach.
         - | Short-term EMA (12-day EMA): A smaller span value for the short-term EMA means that it reacts more quickly
@@ -37,15 +35,12 @@ def get_macd_signals(symbol: str, logger: logging.Logger,
         str:
         Analysis of buy/hold/sell.
     """
-    # Fetch historical stock data using the 'get_bars' method from the 'webull' package
-    bars = wb.get_bars(stock=symbol, interval='d', count=bar_count)
-
-    # Create a DataFrame from the fetched data
-    stock_data = pd.DataFrame(bars)
+    # Fetch historical stock data
+    stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
 
     # Calculate the short-term (e.g., 12-day) and long-term (e.g., 26-day) Exponential Moving Averages (EMAs)
-    stock_data['EMA_short'] = stock_data['close'].ewm(span=12, adjust=False).mean()
-    stock_data['EMA_long'] = stock_data['close'].ewm(span=26, adjust=False).mean()
+    stock_data['EMA_short'] = stock_data['Close'].ewm(span=12, adjust=False).mean()
+    stock_data['EMA_long'] = stock_data['Close'].ewm(span=26, adjust=False).mean()
 
     # Calculate the MACD line and the Signal line (9-day EMA of the MACD line)
     stock_data['MACD'] = stock_data['EMA_short'] - stock_data['EMA_long']

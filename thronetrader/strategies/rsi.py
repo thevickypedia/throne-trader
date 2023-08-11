@@ -1,24 +1,22 @@
 import logging
 
-import pandas
-import webull
-
 from thronetrader.helper import squire
 
-wb = webull.paper_webull()
 
-
-def get_rsi_signals(symbol: str, logger: logging.Logger,
-                    bar_count: int = 100) -> str:
+def get_rsi_signals(symbol: str,
+                    logger: logging.Logger,
+                    bar_count: int = 100,
+                    days: int = 1) -> str:
     """Get buy, sell, and hold signals using the Relative Strength Index (RSI) strategy.
 
     Args:
         symbol: Stock ticker.
         logger: Logger object.
-        bar_count: Number of bars from webull.
+        bar_count: Number of bars from yfinance.
+        days: Number of days to consider.
 
     See Also:
-        - A larger ``bar_count`` gives longer historical data for analysis.
+        - A larger ``bar_count``/``days`` gives longer historical data for trend analysis.
         - A smaller count focuses on recent data for short-term signals.
         - Experiment and backtest to find the best fit for your approach.
 
@@ -26,14 +24,11 @@ def get_rsi_signals(symbol: str, logger: logging.Logger,
         str:
         Analysis of buy/hold/sell.
     """
-    # Fetch historical stock data using the 'get_bars' method from the 'webull' package
-    bars = wb.get_bars(stock=symbol, interval='d', count=bar_count)
-
-    # Create a DataFrame from the fetched data
-    stock_data = pandas.DataFrame(bars)
+    # Fetch historical stock data
+    stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
 
     # Calculate the Relative Strength Index (RSI)
-    delta = stock_data['close'].diff()
+    delta = stock_data['Close'].diff()
     gain = delta.where(delta > 0, 0)
     loss = -delta.where(delta < 0, 0)
     avg_gain = gain.rolling(window=14).mean()

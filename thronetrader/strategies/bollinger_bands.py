@@ -1,15 +1,11 @@
 import logging
 
-import pandas as pd
-import webull
-
 from thronetrader.helper import squire
-
-wb = webull.paper_webull()
 
 
 def get_bollinger_bands_signals(symbol: str, logger: logging.Logger,
                                 bar_count: int = 100,
+                                days: int = 1,
                                 window: int = 20,
                                 num_std: int = 2) -> str:
     """Get buy, sell, and hold signals using the Bollinger Bands strategy.
@@ -17,7 +13,8 @@ def get_bollinger_bands_signals(symbol: str, logger: logging.Logger,
     Args:
         symbol: Stock ticker.
         logger: Logger object.
-        bar_count: Number of bars from Webull.
+        bar_count: Number of bars from Yahoo Finance.
+        days: Number of days to consider.
         window: The window size for the moving average.
         num_std: The number of standard deviations for the Bollinger Bands.
 
@@ -25,20 +22,17 @@ def get_bollinger_bands_signals(symbol: str, logger: logging.Logger,
         str:
         Analysis of buy/hold/sell.
     """
-    # Fetch historical stock data using the 'get_bars' method from the 'webull' package
-    bars = wb.get_bars(stock=symbol, interval='d', count=bar_count)
-
-    # Create a DataFrame from the fetched data
-    stock_data = pd.DataFrame(bars)
+    # Fetch historical stock data
+    stock_data = squire.get_bars(symbol=symbol, bar_count=bar_count, days=days)
 
     # Calculate the moving average and Bollinger Bands
-    stock_data['SMA'] = stock_data['close'].rolling(window=window).mean()
-    stock_data['Upper Band'] = stock_data['SMA'] + stock_data['close'].rolling(window=window).std() * num_std
-    stock_data['Lower Band'] = stock_data['SMA'] - stock_data['close'].rolling(window=window).std() * num_std
+    stock_data['SMA'] = stock_data['Close'].rolling(window=window).mean()
+    stock_data['Upper Band'] = stock_data['SMA'] + stock_data['Close'].rolling(window=window).std() * num_std
+    stock_data['Lower Band'] = stock_data['SMA'] - stock_data['Close'].rolling(window=window).std() * num_std
 
     # Generate the buy, sell, and hold signals based on Bollinger Bands
-    stock_data['buy'] = stock_data['close'] < stock_data['Lower Band']
-    stock_data['sell'] = stock_data['close'] > stock_data['Upper Band']
+    stock_data['buy'] = stock_data['Close'] < stock_data['Lower Band']
+    stock_data['sell'] = stock_data['Close'] > stock_data['Upper Band']
     stock_data['hold'] = ~(stock_data['buy'] | stock_data['sell'])
 
     return squire.classify(stock_data, logger)

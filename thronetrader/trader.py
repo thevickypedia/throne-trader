@@ -1,5 +1,4 @@
 import logging
-import os
 from typing import Dict, List, Union
 
 from thronetrader.helper.logger import default_logger
@@ -29,11 +28,6 @@ class Trader:
             self.logger = logger
         else:
             self.logger = default_logger()
-
-    def __del__(self):
-        """Delete bin file created by webull package."""
-        if os.path.isfile('did.bin'):
-            os.remove('did.bin')
 
 
 class Predictions(Trader):
@@ -85,11 +79,13 @@ class StrategicSignals(Trader):
 
     @wraps(bollinger_bands.get_bollinger_bands_signals)
     def get_bollinger_bands_signals(self, bar_count: int = 100,  # noqa: D102
+                                    days: int = 1,
                                     window: int = 20,
                                     num_std: int = 2) -> str:
         return bollinger_bands.get_bollinger_bands_signals(
             symbol=self.symbol,
             bar_count=bar_count,
+            days=days,
             window=window,
             num_std=num_std,
             logger=self.logger
@@ -97,11 +93,13 @@ class StrategicSignals(Trader):
 
     @wraps(breakout.get_breakout_signals)
     def get_breakout_signals(self, bar_count: int = 100,  # noqa: D102
+                             days: int = 1,
                              short_window: int = 20,
                              long_window: int = 50) -> str:
         return breakout.get_breakout_signals(
             symbol=self.symbol,
             bar_count=bar_count,
+            days=days,
             short_window=short_window,
             long_window=long_window,
             logger=self.logger
