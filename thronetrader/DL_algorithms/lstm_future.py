@@ -75,7 +75,7 @@ class Transformer:
         future_x, _ = lstm_model.prepare_data(future_data)
 
         # Make predictions for the future period
-        return model.predict(x)
+        return model.predict(future_x)
 
     def transform(self) -> numpy.ndarray:
         """Inverse transform the predictions to get the actual stock prices.
