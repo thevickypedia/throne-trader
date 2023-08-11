@@ -6,22 +6,28 @@
 
 # ThroneTrader
 
-### [Deep Learning Algorithms][dl_trade]
+A collection of algorithms to analyze, categorize and predict stocks.
 
-### [Machine Learning Algorithms][ml_trade]
+These algorithms are used to assess stocks, and make predictions about future stock prices.
 
-### [Real Time Signals][realtime]
+The collection of algorithms leverage data analysis, machine learning, and statistical methods to achieve its objectives in the context of financial markets and investments.
 
-### [Strategic Signals][strategies]
+> :bulb: While individual algorithms may lack optimal accuracy, the aggregation of multiple algorithms proves valuable and effective in enhancing overall prediction accuracy.
 
-## Sample Notebooks:
-[**Long Short-Term Memory**][lstm]
+> :warning: Please note that stock prediction is inherently challenging, and the accuracy of any prediction model will depend on the quality and relevance of the data used, the choice of algorithms, and the changing dynamics of the stock market. Continuous evaluation and improvement of the model are essential to enhance its predictive capabilities.
 
-[**Gradient Boosting**][gradient]
+## Components
+- [**Predict stock price using deep learning models**][dl_trade]
+- [**Analyze stock price using machine learning models**][ml_trade]
+- [**Generate buy/sell/hold signals using real time data**][realtime]
+- [**Generate buy/sell/hold signals using financial strategies**][strategies]
 
-[**Linear Regression**][linear]
+## Sample Notebooks
+- [**Long Short-Term Memory**][lstm]
+- [**Gradient Boosting**][gradient]
+- [**Linear Regression**][linear]
 
-## Disclaimer:
+## Disclaimer
 Remember to thoroughly backtest and paper trade any strategy before using real funds, and always exercise caution and risk management when trading stocks.
 
 <details>
