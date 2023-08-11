@@ -2,7 +2,7 @@ import logging
 import os
 import sys
 from datetime import datetime, timedelta
-from typing import List, Tuple, Union, NoReturn
+from typing import List, NoReturn, Tuple, Union
 
 import pandas as pd
 import yfinance as yf

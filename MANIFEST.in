@@ -1,0 +1,4 @@
+global-exclude .DS_Store
+recursive-include thronetrader *
+recursive-exclude */__pycache__ *
+global-exclude */__pycache__/*

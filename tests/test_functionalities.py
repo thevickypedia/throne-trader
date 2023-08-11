@@ -4,7 +4,7 @@ import unittest
 
 import pandas as pd
 
-from thronetrader.trader import RealTimeSignals, StrategicSignals, Predictions
+from thronetrader.trader import Predictions, RealTimeSignals, StrategicSignals
 
 
 class TestFunctionalities(unittest.TestCase):

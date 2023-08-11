@@ -1,0 +1,38 @@
+[project]
+name = "throne-trader"
+dynamic = ["version", "dependencies"]
+description = "Python module that provides collection of algorithms to analyze, categorize and predict stocks."
+readme = "README.md"
+authors = [{ name = "Vignesh Sivanandha Rao", email = "svignesh1793@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+]
+keywords = ["investment", "stock-prediction", "stock-market"]
+requires-python = ">=3.8"
+
+[tool.setuptools]
+packages = ["thronetrader"]
+
+[tool.setuptools.dynamic]
+version      = {attr = "thronetrader.version"}
+dependencies = {file = ["thronetrader/requirements.txt"]}
+
+[build-system]
+requires      = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+dev = ["sphinx==5.1.1", "pre-commit", "recommonmark", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/thevickypedia/throne-trader"
+Docs = "https://thevickypedia.github.io/throne-trader"
+Source = "https://github.com/thevickypedia/throne-trader"
+"Bug Tracker" = "https://github.com/thevickypedia/throne-trader/issues"
+"Release Notes" = "https://github.com/thevickypedia/throne-trader/blob/main/release_notes.rst"
