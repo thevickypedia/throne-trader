@@ -14,6 +14,13 @@
 
 ### [Strategic Signals][strategies]
 
+## Sample Notebooks:
+[**Long Short-Term Memory**][lstm]
+
+[**Gradient Boosting**][gradient]
+
+[**Linear Regression**][linear]
+
 ## Disclaimer:
 Remember to thoroughly backtest and paper trade any strategy before using real funds, and always exercise caution and risk management when trading stocks.
 
@@ -62,3 +69,6 @@ Licensed under the [MIT License][license]
 [strategies]: https://github.com/thevickypedia/throne-trader/blob/main/markdown/STRATEGIES.md
 [license]: https://github.com/thevickypedia/throne-trader/blob/main/LICENSE
 [docs]: https://thevickypedia.github.io/throne-trader/
+[lstm]: https://github.com/thevickypedia/throne-trader/blob/main/notebook/lstm.ipynb
+[gradient]: https://github.com/thevickypedia/throne-trader/blob/main/notebook/gradient_boosting.ipynb
+[linear]: https://github.com/thevickypedia/throne-trader/blob/main/notebook/linear_regression.ipynb
