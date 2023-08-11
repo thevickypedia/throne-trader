@@ -1,12 +1,17 @@
 import unittest
 
-from realtime.insider import aggregate_data
+from thronetrader.realtime.insider import aggregate_data
 
 
 class TestGroupTransactions(unittest.TestCase):
+    """Module to test grouping transactions from finviz.
+
+    >>> TestGroupTransactions
+
+    """
 
     def test_grouping(self):
-        # Sample data for testing
+        """Test grouping functionality with sample data."""
         data = [
             {'Ticker': 'ACEL', 'Owner': 'Peterson Karl Mr.', 'Relationship': 'Director', 'Date': 'Jul 26',
              'Transaction': 'Sale', 'Cost': '11.30', 'Shares': '22,500', 'Value': '254,329',

@@ -1,8 +1,8 @@
 import pandas
+from lstm_model import build_lstm_model, prepare_data
 from sklearn.preprocessing import MinMaxScaler
 
-from helper import squire
-from lstm_model import build_lstm_model, prepare_data
+from thronetrader.helper import squire
 
 if __name__ == '__main__':
     # Get the historical stock data

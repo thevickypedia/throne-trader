@@ -1,10 +1,9 @@
 import logging
-from typing import Dict
 
 import pandas as pd
 import webull
 
-from helper import squire
+from thronetrader.helper import squire
 
 wb = webull.paper_webull()
 

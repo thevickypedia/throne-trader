@@ -1,4 +1,4 @@
-from typing import Tuple, Any
+from typing import Any, Tuple
 
 import matplotlib.pyplot as plt
 import numpy
@@ -7,7 +7,7 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.layers import LSTM, Dense  # noqa: F401
 from tensorflow.keras.models import Sequential  # noqa: F401
 
-from helper import squire
+from thronetrader.helper import squire
 
 scaler = MinMaxScaler(feature_range=(0, 1))
 

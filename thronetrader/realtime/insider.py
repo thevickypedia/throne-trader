@@ -1,5 +1,5 @@
 from collections.abc import Generator
-from typing import List, Dict, Union
+from typing import Dict, List, Union
 
 from pyfinviz.insider import Insider
 

@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import webull
 
-from helper import squire
+from thronetrader.helper import squire
 
 wb = webull.paper_webull()
 
@@ -28,7 +28,7 @@ def get_macd_signals(symbol: str, logger: logging.Logger,
         - | Long-term EMA (26-day EMA): A larger span value for the long-term EMA makes it smoother and less reactive
           | to short-term price fluctuations. This helps in identifying the long-term trends in the stock's price
           | movement. However, a larger span might result in delayed signals and could miss some short-term trends.
-        _ | Crossover Sensitivity: When the short-term EMA crosses above the long-term EMA, it generates a bullish
+        - | Crossover Sensitivity: When the short-term EMA crosses above the long-term EMA, it generates a bullish
           | signal (buy), and when it crosses below the long-term EMA, it generates a bearish signal (sell).
           | The span value influences how quickly these crossovers occur. A smaller span makes crossovers more
           | sensitive, potentially leading to more frequent signals.

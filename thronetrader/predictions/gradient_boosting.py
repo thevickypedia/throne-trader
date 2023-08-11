@@ -1,10 +1,9 @@
-import logging
 from typing import Dict
 
 import numpy as np
 from sklearn.ensemble import GradientBoostingRegressor
 
-from helper import squire
+from thronetrader.helper import squire
 
 
 def gradient_boosting_prediction(symbol: str, threshold: int = None) -> Dict[str, str]:

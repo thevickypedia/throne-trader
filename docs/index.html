@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Welcome to TraderOfThrones’s documentation! &#8212; TraderOfThrones  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/static.css" />
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TraderOfThrones" href="README.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="TraderOfThrones"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">TraderOfThrones  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to TraderOfThrones’s documentation!</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="welcome-to-traderofthrones-s-documentation">
+<h1>Welcome to TraderOfThrones’s documentation!<a class="headerlink" href="#welcome-to-traderofthrones-s-documentation" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Read Me:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">TraderOfThrones</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#strategies">Strategies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#predictions">Predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#deep-learning-algorithms">Deep Learning Algorithms</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-thronetrader.trader">
+<span id="trader"></span><h1>Trader<a class="headerlink" href="#module-thronetrader.trader" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="thronetrader.trader.Trader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.trader.</span></span><span class="sig-name descname"><span class="pre">Trader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Logger</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.trader.Trader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class to load logger and stock ticker.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Trader</span>
+</pre></div>
+</div>
+<p>Instantiates base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock symbol.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="thronetrader.trader.Predictions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.trader.</span></span><span class="sig-name descname"><span class="pre">Predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Logger</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.trader.Predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inherited object from base class for predictions.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Predictions</span>
+</pre></div>
+</div>
+<p>Instantiates base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock symbol.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.Predictions.gradient_boosting_prediction">
+<span class="sig-name descname"><span class="pre">gradient_boosting_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.trader.Predictions.gradient_boosting_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict stock price using a Gradient Boosting Regressor model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>threshold</strong> – Limit used to classify predicted price differences into trading signals based on their significance.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul>
+<li><p>By adjusting the threshold value, you can control the sensitivity of the trading signals.</p></li>
+<li><div class="line-block">
+<div class="line">A higher threshold would lead to fewer and stronger signals,</div>
+<div class="line">indicating more significant price movements required to trigger a signal.</div>
+</div>
+</li>
+<li><p>A lower threshold would result in more frequent signals, capturing smaller price fluctuations.</p></li>
+<li><div class="line-block">
+<div class="line">The choice of the threshold value depends on your risk tolerance, trading strategy,</div>
+<div class="line">and the volatility of the stock being analyzed.</div>
+</div>
+</li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the prediction signal for the next two days.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.Predictions.linear_regression_prediction">
+<span class="sig-name descname"><span class="pre">linear_regression_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.trader.Predictions.linear_regression_prediction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict stock price using linear regression method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>threshold</strong> – Limit used to classify predicted price differences into trading signals based on their significance.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul>
+<li><p>By adjusting the threshold value, you can control the sensitivity of the trading signals.</p></li>
+<li><div class="line-block">
+<div class="line">A higher threshold would lead to fewer and stronger signals,</div>
+<div class="line">indicating more significant price movements required to trigger a signal.</div>
+</div>
+</li>
+<li><p>A lower threshold would result in more frequent signals, capturing smaller price fluctuations.</p></li>
+<li><div class="line-block">
+<div class="line">The choice of the threshold value depends on your risk tolerance, trading strategy,</div>
+<div class="line">and the volatility of the stock being analyzed.</div>
+</div>
+</li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the prediction signal for the next two days.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict[str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="thronetrader.trader.RealTimeSignals">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.trader.</span></span><span class="sig-name descname"><span class="pre">RealTimeSignals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Logger</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.trader.RealTimeSignals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inherited object from base class for realtime signals.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">RealTimeSignals</span>
+</pre></div>
+</div>
+<p>Instantiates base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock symbol.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.RealTimeSignals.get_financial_signals">
+<span class="sig-name descname"><span class="pre">get_financial_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pe_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pb_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payout_ratio_threshold_buy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payout_ratio_threshold_sell</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.trader.RealTimeSignals.get_financial_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict buy/sell/hold signals based on financial ratios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>pe_threshold</strong> – Maximum Price-to-Earnings (P/E) ratio considered acceptable for a “Buy” signal.</p></li>
+<li><p><strong>pb_threshold</strong> – Maximum Price-to-Book (P/B) ratio considered acceptable for a “Buy” signal.</p></li>
+<li><p><strong>payout_ratio_threshold_buy</strong> – Maximum payout ratio considered acceptable for a “Buy” signal.</p></li>
+<li><p><strong>payout_ratio_threshold_sell</strong> – Minimum payout ratio considered acceptable for a “Sell” signal.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>If you’re inclined towards a buy, set <cite>payout_ratio_threshold_buy</cite> to 0.
+If you’re inclined towards a sell, set <cite>payout_ratio_threshold_sell</cite> to 1.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Buy, Sell, or Hold signal.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.RealTimeSignals.get_insider_signals">
+<span class="sig-name descname"><span class="pre">get_insider_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.trader.RealTimeSignals.get_insider_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get insider signals for a particular transaction (if found).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> – Stock ticker.</p>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of key value pairs with the transaction information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.trader.</span></span><span class="sig-name descname"><span class="pre">StrategicSignals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Logger</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.trader.StrategicSignals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inherited object from base class for strategic signals.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">StrategicSignals</span>
+</pre></div>
+</div>
+<p>Instantiates base class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock symbol.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_bollinger_bands_signals">
+<span class="sig-name descname"><span class="pre">get_bollinger_bands_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_std</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_bollinger_bands_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get buy, sell, and hold signals using the Bollinger Bands strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from Webull.</p></li>
+<li><p><strong>window</strong> – The window size for the moving average.</p></li>
+<li><p><strong>num_std</strong> – The number of standard deviations for the Bollinger Bands.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Analysis of buy/hold/sell.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_breakout_signals">
+<span class="sig-name descname"><span class="pre">get_breakout_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">short_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_breakout_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get buy, sell and hold signals for a particular stock using breakout strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>short_window</strong> – Short term moving average.</p></li>
+<li><p><strong>long_window</strong> – Long term moving average.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>A larger <cite>bar_count</cite> gives longer historical data for trend analysis.</p></li>
+<li><p>A smaller count focuses on recent data for short-term signals.</p></li>
+<li><p>Experiment and backtest to find the best fit for your approach.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Analysis of buy/hold/sell.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_crossover_signals">
+<span class="sig-name descname"><span class="pre">get_crossover_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">short_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">long_window</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_crossover_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get buy, sell and hold signals for a particular stock using breakout strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>short_window</strong> – Short term moving average.</p></li>
+<li><p><strong>long_window</strong> – Long term moving average.</p></li>
+<li><p><strong>years</strong> – Number of years for the historical data.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul>
+<li><div class="line-block">
+<div class="line">The number of years used to calculate moving averages impacts the frequency, responsiveness,</div>
+<div class="line">accuracy, and risk associated with the signals generated by the strategy.</div>
+</div>
+</li>
+<li><p>A larger number of years will provide a longer historical perspective and result in smoother moving averages.</p></li>
+<li><p>This tends to generate fewer buy and sell signals as the strategy focuses on longer-term trends.</p></li>
+<li><p>Experiment and backtest to find the best fit for your approach.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Analysis of buy/hold/sell.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_macd_signals">
+<span class="sig-name descname"><span class="pre">get_macd_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_macd_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get buy, sell, and hold signals using the Moving Average Convergence Divergence (MACD) strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul>
+<li><p>A larger <cite>bar_count</cite> gives longer historical data for analysis.</p></li>
+<li><p>A smaller count focuses on recent data for short-term signals.</p></li>
+<li><p>Experiment and backtest to find the best fit for your approach.</p></li>
+<li><div class="line-block">
+<div class="line">Short-term EMA (12-day EMA): A smaller span value for the short-term EMA means that it reacts more quickly</div>
+<div class="line">to recent price changes. This can lead to more frequent and sensitive crossovers between the MACD line and</div>
+<div class="line">the Signal line, resulting in more buy and sell signals. However, it might also generate more false signals</div>
+<div class="line">in volatile markets.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Long-term EMA (26-day EMA): A larger span value for the long-term EMA makes it smoother and less reactive</div>
+<div class="line">to short-term price fluctuations. This helps in identifying the long-term trends in the stock’s price</div>
+<div class="line">movement. However, a larger span might result in delayed signals and could miss some short-term trends.</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Crossover Sensitivity: When the short-term EMA crosses above the long-term EMA, it generates a bullish</div>
+<div class="line">signal (buy), and when it crosses below the long-term EMA, it generates a bearish signal (sell).</div>
+<div class="line">The span value influences how quickly these crossovers occur. A smaller span makes crossovers more</div>
+<div class="line">sensitive, potentially leading to more frequent signals.</div>
+</div>
+</li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Analysis of buy/hold/sell.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.trader.StrategicSignals.get_rsi_signals">
+<span class="sig-name descname"><span class="pre">get_rsi_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.trader.StrategicSignals.get_rsi_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get buy, sell, and hold signals using the Relative Strength Index (RSI) strategy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>logger</strong> – Logger object.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from webull.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>A larger <cite>bar_count</cite> gives longer historical data for analysis.</p></li>
+<li><p>A smaller count focuses on recent data for short-term signals.</p></li>
+<li><p>Experiment and backtest to find the best fit for your approach.</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Analysis of buy/hold/sell.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="#">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Welcome to TraderOfThrones’s documentation!</a></li>
+<li><a class="reference internal" href="#module-thronetrader.trader">Trader</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="README.html"
+                          title="next chapter">TraderOfThrones</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="README.html" title="TraderOfThrones"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">TraderOfThrones  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Welcome to TraderOfThrones’s documentation!</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Vignesh Rao.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+    </div>
+  </body>
+</html>

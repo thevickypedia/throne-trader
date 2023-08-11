@@ -1,6 +1,6 @@
 import logging
 
-from helper import squire
+from thronetrader.helper import squire
 
 
 def get_crossover_signals(symbol: str, logger: logging.Logger,
