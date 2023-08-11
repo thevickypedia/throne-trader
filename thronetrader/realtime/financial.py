@@ -1,12 +1,16 @@
+import logging
+from typing import Union
+
 import pandas
 import yfinance
 
 
-def get_financial_ratios_yfinance(symbol: str) -> pandas.DataFrame:
+def get_financial_ratios_yfinance(symbol: str, logger: logging.Logger) -> pandas.DataFrame:
     """Get financial ratios for a given stock symbol using yfinance.
 
     Args:
         symbol: Stock ticker.
+        logger: Logger object.
 
     Returns:
         pandas.DataFrame: DataFrame containing financial ratios.
@@ -24,18 +28,19 @@ def get_financial_ratios_yfinance(symbol: str) -> pandas.DataFrame:
         }
         return pandas.DataFrame([financial_ratios])
     except Exception as error:
-        raise ValueError(f"Error fetching financial ratios for {symbol}: {error}")
+        logger.error("Error fetching financial ratios for %s: %s", symbol, error)
 
 
-def get_financial_signals(symbol: str,
+def get_financial_signals(symbol: str, logger: logging.Logger,
                           pe_threshold: int = 20,
                           pb_threshold: int = 1.5,
                           payout_ratio_threshold_buy: int = 0.5,
-                          payout_ratio_threshold_sell: int = 0.7) -> str:
+                          payout_ratio_threshold_sell: int = 0.7) -> Union[str, None]:
     """Predict buy/sell/hold signals based on financial ratios.
 
     Args:
         symbol: Stock ticker.
+        logger: Logger object.
         pe_threshold: Maximum Price-to-Earnings (P/E) ratio considered acceptable for a "Buy" signal.
         pb_threshold: Maximum Price-to-Book (P/B) ratio considered acceptable for a "Buy" signal.
         payout_ratio_threshold_buy: Maximum payout ratio considered acceptable for a "Buy" signal.
@@ -48,7 +53,9 @@ def get_financial_signals(symbol: str,
     Returns:
         str: Buy, Sell, or Hold signal.
     """
-    financial_ratios_data = get_financial_ratios_yfinance(symbol)
+    financial_ratios_data = get_financial_ratios_yfinance(symbol=symbol, logger=logger)
+    if not financial_ratios_data:
+        return
 
     # Extract the financial ratios values from the DataFrame
     pe_ratio = financial_ratios_data['PE Ratio'].iloc[0]
@@ -59,15 +66,16 @@ def get_financial_signals(symbol: str,
             and pe_ratio and pb_ratio:
         pass
     elif any(map(lambda x: x is None, (pe_ratio, payout_ratio, pb_ratio))):
-        print(f"PE ratio: {pe_ratio}")
-        print(f"PB ratio: {pb_ratio}")
-        print(f"Payout ratio: {payout_ratio}")
-        return "Unpredictable"
+        logger.warning("Not enough information to analyze.")
+        logger.info("PE ratio: %s", pe_ratio)
+        logger.info("PB ratio: %s", pb_ratio)
+        logger.info("Payout ratio: %s", payout_ratio)
+        return "unpredictable"
 
     # Check the conditions for generating buy/sell/hold signals based on financial ratios
     if pe_ratio < pe_threshold and payout_ratio < payout_ratio_threshold_buy and pb_ratio < pb_threshold:
-        return "Buy"  # All conditions met for a "Buy" signal
+        return "buy"  # All conditions met for a "Buy" signal
     elif pe_ratio > pe_threshold and payout_ratio > payout_ratio_threshold_sell and pb_ratio > pb_threshold:
-        return "Sell"  # All conditions met for a "Sell" signal
+        return "sell"  # All conditions met for a "Sell" signal
     else:
-        return "Hold"  # None of the conditions met for a "Buy" or "Sell" signal, so it's a "Hold" signal
+        return "hold"  # None of the conditions met for a "Buy" or "Sell" signal, so it's a "Hold" signal

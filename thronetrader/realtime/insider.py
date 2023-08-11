@@ -81,7 +81,3 @@ def get_all_insider_buy() -> List[Dict[str, Union[str, int, float]]]:
 def get_all_insider_sell() -> List[Dict[str, Union[str, int, float]]]:
     """Get the insider trading information for all SELL transactions."""
     return aggregate_data(transactions=get_insider(Insider.FilterOption.SELL))
-
-
-if __name__ == '__main__':
-    print(list(get_insider_signals(symbol='rcg')))

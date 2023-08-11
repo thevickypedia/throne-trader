@@ -1,3 +1,4 @@
+import logging
 import os
 import sys
 from datetime import datetime, timedelta
@@ -32,7 +33,7 @@ def get_historical_data(symbol: str,
             zip(stock_data.index, stock_data['Close'])]
 
 
-def classify(stock_data: pandas.DataFrame, simple: bool) -> Union[Dict[str, str], str]:
+def classify(stock_data: pandas.DataFrame, logger: logging.Logger) -> str:
     """Calculates short term moving average, long term moving average to generate the signals."""
     # Filter buy, sell, and hold signals
     buy_signals = stock_data[stock_data['buy']]
@@ -40,15 +41,15 @@ def classify(stock_data: pandas.DataFrame, simple: bool) -> Union[Dict[str, str]
     hold_signals = stock_data[stock_data['hold']]
 
     buy_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): "Buy"
+        pandas.Timestamp(timestamp).to_pydatetime(): "buy"
         for timestamp in buy_signals.index.values
     }
     sell_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): "Sell"
+        pandas.Timestamp(timestamp).to_pydatetime(): "sell"
         for timestamp in sell_signals.index.values
     }
     hold_signals_timestamped = {
-        pandas.Timestamp(timestamp).to_pydatetime(): "Hold"
+        pandas.Timestamp(timestamp).to_pydatetime(): "hold"
         for timestamp in hold_signals.index.values
     }
 
@@ -61,20 +62,20 @@ def classify(stock_data: pandas.DataFrame, simple: bool) -> Union[Dict[str, str]
     assert all_signals_ct == len(stock_data), "Not all data was accounted for stock signals."
 
     assessment = {
-        "Buy": round(len(buy_signals) / all_signals_ct * 100, 2),
-        "Sell": round(len(sell_signals) / all_signals_ct * 100, 2),
-        "Hold": round(len(hold_signals) / all_signals_ct * 100, 2)
+        "buy": round(len(buy_signals) / all_signals_ct * 100, 2),
+        "sell": round(len(sell_signals) / all_signals_ct * 100, 2),
+        "hold": round(len(hold_signals) / all_signals_ct * 100, 2)
     }
-
-    if simple:
-        return max(assessment, key=assessment.get).upper()
 
     for key, value in assessment.items():
-        print(f"{key} Signals:", f"{value}%")
+        msg = f"{key} Signals: {value}%"
+        logger.info(msg)
 
-    print(f"\nAlgorithm's assessment: {max(assessment, key=assessment.get).upper()}\n")
+    logger.info(f"Algorithm's assessment: {max(assessment, key=assessment.get).upper()}")
 
-    return {
+    logger.debug({
         k.strftime("%A - %Y-%m-%d"): v
         for k, v in all_signals.items()
-    }
+    })
+
+    return max(assessment, key=assessment.get)

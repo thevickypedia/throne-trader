@@ -1,30 +1,30 @@
-import pprint
+import logging
 from typing import Dict
 
 import pandas as pd
 import webull
+
 from helper import squire
 
 wb = webull.paper_webull()
 
 
-def get_bollinger_bands_signals(symbol: str,
+def get_bollinger_bands_signals(symbol: str, logger: logging.Logger,
                                 bar_count: int = 100,
                                 window: int = 20,
-                                num_std: int = 2,
-                                simple: bool = False) -> Dict[str, str]:
+                                num_std: int = 2) -> str:
     """Get buy, sell, and hold signals using the Bollinger Bands strategy.
 
     Args:
         symbol: Stock ticker.
+        logger: Logger object.
         bar_count: Number of bars from Webull.
         window: The window size for the moving average.
         num_std: The number of standard deviations for the Bollinger Bands.
-        simple: Simply returns whether it's a buy, sell or hold.
 
     Returns:
-        Dict[str, str]:
-        A dictionary of each day's buy, sell, and hold signals.
+        str:
+        Analysis of buy/hold/sell.
     """
     # Fetch historical stock data using the 'get_bars' method from the 'webull' package
     bars = wb.get_bars(stock=symbol, interval='d', count=bar_count)
@@ -42,4 +42,4 @@ def get_bollinger_bands_signals(symbol: str,
     stock_data['sell'] = stock_data['close'] > stock_data['Upper Band']
     stock_data['hold'] = ~(stock_data['buy'] | stock_data['sell'])
 
-    return squire.classify(stock_data, simple)
+    return squire.classify(stock_data, logger)
