@@ -1,0 +1,53 @@
+name: pypi-publish
+
+on:
+  push:
+  release:
+    types: [published]
+
+jobs:
+  common_steps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+  pytest:
+    needs: common_steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run pytest
+        run: |
+          python -m pip install --upgrade pip
+          python -m pytest
+
+  install-and-create-packages:
+    needs: common_steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          pip install build twine
+      - name: Create packages
+        run: python -m build
+
+  twine-check:
+    needs: common_steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run twine check
+        run: twine check dist/*
+
+  upload-to-pypi:
+    if: github.event_name == 'release'
+    needs: common_steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload to pypi
+        env:
+          TWINE_USERNAME: ${{ secrets.PYPI_USER }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: twine upload dist/*.whl
