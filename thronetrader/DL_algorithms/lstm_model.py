@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
+from thronetrader.DL_algorithms.steward import Optimizers
 from thronetrader.helper import squire
 
 scaler = MinMaxScaler(feature_range=(0, 1))
@@ -52,21 +53,26 @@ def prepare_data_lstm(data: pd.DataFrame,
     return x_axis, y_axis
 
 
-def build_lstm_model(input_shape: Tuple[Any, int]) -> Sequential:
+def build_lstm_model(input_shape: Tuple[Any, int], optimizer: str = None) -> Sequential:
     """Build the LSTM model.
 
     Args:
         input_shape: A tuple containing the prepared input data (X) and labels (y).
+        optimizer: Takes a custom optimizer as an argument.
 
     Returns:
         Sequential:
         Sequential object.
     """
+    if optimizer is None:
+        optimizer = Optimizers.adam
+    if isinstance(optimizer, Optimizers):
+        optimizer = optimizer.value
     sequential = Sequential()
     sequential.add(LSTM(units=50, return_sequences=True, input_shape=input_shape))
     sequential.add(LSTM(units=50))
     sequential.add(Dense(1))
-    sequential.compile(optimizer='adam', loss='mean_squared_error')
+    sequential.compile(optimizer=optimizer, loss='mean_squared_error')
     return sequential
 
 
@@ -77,7 +83,7 @@ if __name__ == '__main__':
     train_size = int(len(X) * 0.8)
     X_train, X_test, y_train, y_test = X[:train_size], X[train_size:], y[:train_size], y[train_size:]
 
-    model = build_lstm_model(input_shape=(X_train.shape[1], 1))
+    model = build_lstm_model(input_shape=(X_train.shape[1], 1), optimizer=Optimizers.sgd)
     model.fit(X_train, y_train, epochs=100, batch_size=32, validation_split=0.1, verbose=1)
 
     # Make predictions

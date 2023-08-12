@@ -86,7 +86,7 @@ Remember to thoroughly backtest and paper trade any strategy before using real f
 symbolizing power, wealth, and influence.
 <br><br>
 "ThroneTrader" signifies the algorithm's quest for dominance in the financial markets, much like the characters in the 
-show strive to sit upon the Iron Throne.
+show strive to sit upon the Iron Throne.</i>
 
 </details>
 

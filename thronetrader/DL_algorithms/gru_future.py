@@ -1,3 +1,6 @@
+from typing import NoReturn
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
@@ -89,6 +92,24 @@ class GRUTransformer:
         future_predictions = self.generate_predictions()
         return gru_model.scaler.inverse_transform(future_predictions)
 
+    def plot_it(self, data: pd.Series) -> NoReturn:
+        """Plot the data using matplotlib.
+
+        Args:
+            data: Takes the future prices as an argument.
+        """
+        plt.figure(figsize=(10, 6))
+        plt.plot(data.index, data.values, label="Predicted Prices")
+        actual_data = pd.Series(self.historical_data['Close'])
+        plt.plot(actual_data.index, actual_data.values, label="Actual Prices")
+        plt.xlabel("Date")
+        plt.ylabel("Stock Price")
+        plt.title("Predicted Future Stock Prices")
+        plt.legend()
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.show()
+
     def future_prices(self) -> pd.Series:
         """Get future predictions mapped to the future dates.
 
@@ -99,8 +120,10 @@ class GRUTransformer:
         transformed_future_predictions = self.transform()
         future_dates = pd.date_range(start=self.historical_data.index[-1],
                                      periods=len(transformed_future_predictions))
-        return pd.Series(data=transformed_future_predictions[:, 0], index=future_dates)
+        future_prices = pd.Series(data=transformed_future_predictions[:, 0], index=future_dates)
+        self.plot_it(data=future_prices)
+        return future_prices
 
 
 if __name__ == '__main__':
-    print(GRUTransformer(symbol="GOOGL").future_prices())
+    GRUTransformer(symbol="GOOGL").future_prices()

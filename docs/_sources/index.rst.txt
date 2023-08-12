@@ -46,6 +46,12 @@ GRU Model
    :members:
    :undoc-members:
 
+Steward
+=======
+.. automodule:: thronetrader.DL_algorithms.steward
+   :members:
+   :undoc-members:
+
 --------Machine Learning--------
 ================================
 Gradient Boosting
