@@ -32,6 +32,7 @@ jobs:
               break
             fi
           done
+          echo "Changes: ${files_changed}"
           if [[ "${{ env.changes_in_folder }}" == 'true' ]]; then
             echo "Changes identified in package. Running pytest."
           else
