@@ -64,6 +64,8 @@ jobs:
       - name: Create packages
         run: |
           python -m build
+      - name: Run twine check
+        run: |
           twine check dist/*
 
   coronation:
@@ -84,4 +86,5 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         run: |
           pip install build twine
+          python -m build
           twine upload dist/*.whl
