@@ -1,7 +1,10 @@
 name: pypi-publish
 
 on:
+  workflow_dispatch: {}
   push:
+    branches:
+      - main
   release:
     types: [published]
 
@@ -16,11 +19,28 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Run pytest
+      - name: Check for changes in the package
+        id: check-changes
+        run: |
+          changed_files=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
+          changed_in_folder=false
+          for file in $changed_files; do
+            if [[ $file == "thronetrader/"* && $file != "thronetrader/__init__.py" && $file != "thronetrader/requirements.txt" ]]; then
+              changed_in_folder=true
+              break
+            fi
+          done
+          echo "::set-output name=changed_in_folder::$changed_in_folder"
+
+      - name: Install dependencies and run functional tests
+        if: steps.check-changes.outputs.changed_in_folder == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r thronetrader/requirements.txt
+      - name: Run pytest
+        if: steps.check-changes.outputs.changed_in_folder == 'true'
+        run: |
           python -m pytest tests/
 
   vanguard:
@@ -47,8 +67,17 @@ jobs:
     needs: vanguard
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
       - name: Upload to pypi
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USER }}
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-        run: twine upload dist/*.whl
+        run: |
+          pip install build twine
+          twine upload dist/*.whl
