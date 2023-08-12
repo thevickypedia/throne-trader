@@ -57,3 +57,7 @@ class TestFunctionalities(unittest.TestCase):
         linear = predictions.linear_regression_prediction()
         assert linear is None or (isinstance(gradient, dict) and
                                   tuple(gradient.keys()) == ('ticker', 'signal', 'signal_rate', 'recommendation'))
+
+
+if __name__ == '__main__':
+    unittest.main()
