@@ -24,24 +24,29 @@ jobs:
       - name: Check for changes in the package
         id: check-changes
         run: |
-          changed_files=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
-          changed_in_folder=false
-          for file in $changed_files; do
+          files_changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
+          changes_in_folder=false
+          for file in $files_changed; do
             if [[ $file == "thronetrader/"* && $file != "thronetrader/__init__.py" && $file != "thronetrader/requirements.txt" ]]; then
-              changed_in_folder=true
+              changes_in_folder=true
               break
             fi
           done
-          echo "::set-output name=changed_in_folder::$changed_in_folder"
+          if [[ "${{ env.changes_in_folder }}" == 'true' ]]; then
+            echo "Changes identified in package. Running pytest."
+          else
+            echo "No changes were found in package. Skipping pytest."
+          fi
+          echo "changes_in_folder=$changes_in_folder" >> $GITHUB_ENV
 
       - name: Install dependencies and run functional tests
-        if: steps.check-changes.outputs.changed_in_folder == 'true'
+        if: env.changes_in_folder == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r thronetrader/requirements.txt
       - name: Run pytest
-        if: steps.check-changes.outputs.changed_in_folder == 'true'
+        if: env.changes_in_folder == 'true'
         run: |
           python -m pytest tests/
 
