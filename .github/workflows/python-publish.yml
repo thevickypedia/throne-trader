@@ -21,8 +21,9 @@ jobs:
         with:
           python-version: '3.9'
 
+      # Runs only when the event is NOT a release, as the condition is not necessary when it is
       - name: Check for changes in the package
-        id: check-changes
+        if: github.event_name != 'release'
         run: |
           files_changed=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}")
           echo "Changes: ${files_changed}"
@@ -34,8 +35,9 @@ jobs:
             echo "No changes were found in package. Skipping pytest."
           fi
 
+      # Runs when the event is a release or when there are changes in the package
       - name: Install dependencies and run pytest
-        if: env.changes_in_folder == 'true'
+        if: github.event_name == 'release' || env.changes_in_folder == 'true'
         run: |
           python -m pip install --upgrade pip
           pip install pytest
