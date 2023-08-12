@@ -43,7 +43,7 @@ jobs:
           pip install pytest
           pip install -r thronetrader/requirements.txt
       - name: Run pytest
-        if: env.changes_in_folder == 'true'
+        if: github.event_name == 'release' || env.changes_in_folder == 'true'
         run: |
           python -m pytest tests/
 
