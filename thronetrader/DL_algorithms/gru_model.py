@@ -11,29 +11,29 @@ from thronetrader.helper import squire
 scaler = MinMaxScaler(feature_range=(0, 1))
 
 
-def import_tensorflow() -> Tuple['LSTM', 'Dense', 'Sequential']:
+def import_tensorflow() -> Tuple['Dense', 'GRU', 'Sequential']:
     """Imports tensorflow objects, suppressing the logger information.
 
     Returns:
-        Tuple[LSTM, Dense, Sequential]:
-        Returns a tuple of LSTM, Dense and Sequential objects.
+        Tuple[Dense, GRU, Sequential]:
+        Returns a tuple of Dense, GRU and Sequential objects.
     """
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # TensorFlow to only display warning messages (level 2) and higher
-    from tensorflow.keras.layers import LSTM, Dense  # noqa: F401
+    from tensorflow.keras.layers import GRU, Dense  # noqa: F401
     from tensorflow.keras.models import Sequential  # noqa: F401
-    return LSTM, Dense, Sequential
+    return Dense, GRU, Sequential
 
 
-LSTM, Dense, Sequential = import_tensorflow()
+Dense, GRU, Sequential = import_tensorflow()
 
 
-def prepare_data_lstm(data: pd.DataFrame,
-                      look_back: int = 7) -> Tuple[np.ndarray, np.ndarray]:
-    """Prepare the data for LSTM model training.
+def prepare_data_gru(data: pd.DataFrame,
+                     look_back: int = 7) -> Tuple[np.ndarray, np.ndarray]:
+    """Prepare the data for GRU model training.
 
     Args:
         data: Historical stock data as a DataFrame.
-        look_back: Number of look-back periods for the LSTM model. Defaults to 7.
+        look_back: Number of look-back periods for the GRU model. Defaults to 7.
 
     Returns:
         Tuple[numpy.ndarray, numpy.ndarray]:
@@ -52,7 +52,7 @@ def prepare_data_lstm(data: pd.DataFrame,
     return x_axis, y_axis
 
 
-def build_lstm_model(input_shape: Tuple[Any, int]) -> Sequential:
+def build_gru_model(input_shape: Tuple[Any, int]) -> Sequential:
     """Build the LSTM model.
 
     Args:
@@ -63,8 +63,8 @@ def build_lstm_model(input_shape: Tuple[Any, int]) -> Sequential:
         Sequential object.
     """
     sequential = Sequential()
-    sequential.add(LSTM(units=50, return_sequences=True, input_shape=input_shape))
-    sequential.add(LSTM(units=50))
+    sequential.add(GRU(units=50, return_sequences=True, input_shape=input_shape))
+    sequential.add(GRU(units=50))
     sequential.add(Dense(1))
     sequential.compile(optimizer='adam', loss='mean_squared_error')
     return sequential
@@ -72,12 +72,12 @@ def build_lstm_model(input_shape: Tuple[Any, int]) -> Sequential:
 
 if __name__ == '__main__':
     stock_data = squire.get_historical_data("AAPL", years=5, df=True)
-    X, y = prepare_data_lstm(stock_data)
+    X, y = prepare_data_gru(stock_data)
 
     train_size = int(len(X) * 0.8)
     X_train, X_test, y_train, y_test = X[:train_size], X[train_size:], y[:train_size], y[train_size:]
 
-    model = build_lstm_model(input_shape=(X_train.shape[1], 1))
+    model = build_gru_model(input_shape=(X_train.shape[1], 1))
     model.fit(X_train, y_train, epochs=100, batch_size=32, validation_split=0.1, verbose=1)
 
     # Make predictions
@@ -97,5 +97,5 @@ if __name__ == '__main__':
     plt.plot(stock_data.index[train_size + 7:], y_pred, label='Predictions')
     plt.plot(stock_data.index[train_size + 7:], y_test, label='Actual Prices')
     plt.legend()
-    plt.title("LSTM Model")
+    plt.title("GRU Model")
     plt.show()

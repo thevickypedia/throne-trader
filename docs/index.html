@@ -472,10 +472,10 @@
 <section id="module-thronetrader.DL_algorithms.lstm_future">
 <span id="lstm-future-predictions"></span><h1>LSTM Future Predictions<a class="headerlink" href="#module-thronetrader.DL_algorithms.lstm_future" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.Transformer">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.lstm_future.</span></span><span class="sig-name descname"><span class="pre">Transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_validate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.Transformer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transformer object to predict future prices using Long short-term memory (LSTM) network.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Transformer</span>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.LSTMTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.lstm_future.</span></span><span class="sig-name descname"><span class="pre">LSTMTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_validate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.LSTMTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>LSTMTransformer object to predict future prices using Long short-term memory (LSTM) network.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">LSTMTransformer</span>
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -490,7 +490,7 @@
 </li>
 </ul>
 </div>
-<p>Download historical stock data and instantiate Transformer object.</p>
+<p>Download historical stock data and instantiate LSTMTransformer object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -501,8 +501,8 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.Transformer.training_dataset">
-<span class="sig-name descname"><span class="pre">training_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.Transformer.training_dataset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.LSTMTransformer.training_dataset">
+<span class="sig-name descname"><span class="pre">training_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.LSTMTransformer.training_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download training dataset for the duration of training period specified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -515,8 +515,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.Transformer.validation_dataset">
-<span class="sig-name descname"><span class="pre">validation_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.Transformer.validation_dataset" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.LSTMTransformer.validation_dataset">
+<span class="sig-name descname"><span class="pre">validation_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.LSTMTransformer.validation_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download validation dataset for the duration of validation period specified.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -529,8 +529,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.Transformer.generate_predictions">
-<span class="sig-name descname"><span class="pre">generate_predictions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.Transformer.generate_predictions" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.LSTMTransformer.generate_predictions">
+<span class="sig-name descname"><span class="pre">generate_predictions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.LSTMTransformer.generate_predictions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare the data, build the LSTM model, train the model and predict future stock prices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -543,8 +543,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.Transformer.transform">
-<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.Transformer.transform" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.LSTMTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.LSTMTransformer.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse transform the predictions to get the actual stock prices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -557,8 +557,8 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.Transformer.future_prices">
-<span class="sig-name descname"><span class="pre">future_prices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.Transformer.future_prices" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_future.LSTMTransformer.future_prices">
+<span class="sig-name descname"><span class="pre">future_prices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_future.LSTMTransformer.future_prices" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get future predictions mapped to the future dates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -590,8 +590,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_model.prepare_data">
-<span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.lstm_model.</span></span><span class="sig-name descname"><span class="pre">prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">look_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_model.prepare_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_model.prepare_data_lstm">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.lstm_model.</span></span><span class="sig-name descname"><span class="pre">prepare_data_lstm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">look_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_model.prepare_data_lstm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare the data for LSTM model training.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -612,6 +612,162 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="thronetrader.DL_algorithms.lstm_model.build_lstm_model">
 <span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.lstm_model.</span></span><span class="sig-name descname"><span class="pre">build_lstm_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequential</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.lstm_model.build_lstm_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the LSTM model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>input_shape</strong> – A tuple containing the prepared input data (X) and labels (y).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sequential object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sequential</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="module-thronetrader.DL_algorithms.gru_future">
+<span id="gru-future-predictions"></span><h1>GRU Future Predictions<a class="headerlink" href="#module-thronetrader.DL_algorithms.gru_future" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_future.GRUTransformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.gru_future.</span></span><span class="sig-name descname"><span class="pre">GRUTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years_to_validate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_future.GRUTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>GRUTransformer object to predict future prices using Gated Recurrent Unit (GRU) model.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">GRUTransformer</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>Gated Recurrent Unit (GRU) is a type of recurrent neural network (RNN)</p></li>
+<li><p>GRU is designed to capture sequential patterns and relationships in data.</p></li>
+<li><p>GRU has a more straightforward architecture compared to LSTM, which makes it easier to train and understand.</p></li>
+<li><p>Due to its simplified design, GRU may require less computational resources and training time compared to LSTM.</p></li>
+</ul>
+</div>
+<p>Download historical stock data and instantiate GRUTransformer object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>epochs</strong> – Total number of iterations of all the training data in one cycle for training the model.</p></li>
+<li><p><strong>batch_size</strong> – Number of samples propagated through the network before the model is updated.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_future.GRUTransformer.training_dataset">
+<span class="sig-name descname"><span class="pre">training_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_future.GRUTransformer.training_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download training dataset for the duration of training period specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the training data as a DataFrame.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_future.GRUTransformer.validation_dataset">
+<span class="sig-name descname"><span class="pre">validation_dataset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_future.GRUTransformer.validation_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download validation dataset for the duration of validation period specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the validation data as a DataFrame.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_future.GRUTransformer.generate_predictions">
+<span class="sig-name descname"><span class="pre">generate_predictions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_future.GRUTransformer.generate_predictions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare the data, build the GRU model, train the model and predict future stock prices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the predictions as a multidimensional, homogeneous array of fixed-size items.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_future.GRUTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_future.GRUTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse transform the predictions to get the actual stock prices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the inverse of scaling predictions as a multidimensional, homogeneous array of fixed-size items.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_future.GRUTransformer.future_prices">
+<span class="sig-name descname"><span class="pre">future_prices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_future.GRUTransformer.future_prices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get future predictions mapped to the future dates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns the future predictions mapped to the dates as a Series.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-thronetrader.DL_algorithms.gru_model">
+<span id="gru-model"></span><h1>GRU Model<a class="headerlink" href="#module-thronetrader.DL_algorithms.gru_model" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_model.import_tensorflow">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.gru_model.</span></span><span class="sig-name descname"><span class="pre">import_tensorflow</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dense</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">GRU</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Sequential</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_model.import_tensorflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Imports tensorflow objects, suppressing the logger information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Returns a tuple of Dense, GRU and Sequential objects.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple[Dense, GRU, Sequential]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_model.prepare_data_gru">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.gru_model.</span></span><span class="sig-name descname"><span class="pre">prepare_data_gru</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">look_back</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_model.prepare_data_gru" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare the data for GRU model training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Historical stock data as a DataFrame.</p></li>
+<li><p><strong>look_back</strong> – Number of look-back periods for the GRU model. Defaults to 7.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing the prepared input data (X) and labels (y).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[numpy.ndarray, numpy.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.DL_algorithms.gru_model.build_gru_model">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.DL_algorithms.gru_model.</span></span><span class="sig-name descname"><span class="pre">build_gru_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequential</span></span></span><a class="headerlink" href="#thronetrader.DL_algorithms.gru_model.build_gru_model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the LSTM model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1087,6 +1243,8 @@
 <li><a class="reference internal" href="#deep-learning">——–Deep Learning——–</a></li>
 <li><a class="reference internal" href="#module-thronetrader.DL_algorithms.lstm_future">LSTM Future Predictions</a></li>
 <li><a class="reference internal" href="#module-thronetrader.DL_algorithms.lstm_model">LSTM Model</a></li>
+<li><a class="reference internal" href="#module-thronetrader.DL_algorithms.gru_future">GRU Future Predictions</a></li>
+<li><a class="reference internal" href="#module-thronetrader.DL_algorithms.gru_model">GRU Model</a></li>
 <li><a class="reference internal" href="#machine-learning">——–Machine Learning——–</a></li>
 <li><a class="reference internal" href="#module-thronetrader.ML_algorithms.gradient_boosting">Gradient Boosting</a></li>
 <li><a class="reference internal" href="#module-thronetrader.ML_algorithms.linear_regression">Linear Regression</a></li>

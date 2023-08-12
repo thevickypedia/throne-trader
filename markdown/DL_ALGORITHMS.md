@@ -34,3 +34,41 @@
 - Training LSTM models can be computationally intensive, especially with a large number of layers and hidden units.
 
 LSTM remains a crucial building block in modern deep learning architectures, and its ability to handle long-term dependencies makes it a valuable tool for sequential data analysis and prediction tasks.
+
+## GRU (Gated Recurrent Unit):
+
+- GRU is a type of recurrent neural network (RNN) architecture that, like LSTM, is designed to capture sequential patterns and relationships in data.
+
+### Key Components of GRU:
+
+GRU shares some similarities with LSTM, but it uses a simpler architecture with two main gates:
+
+1. **Update Gate (z):** This gate determines how much of the previous memory to keep and how much to update with new information.
+
+2. **Reset Gate (r):** The reset gate decides what parts of the previous memory should be forgotten or "reset" based on the new input.
+
+GRU processes sequences in a similar way to LSTM, updating its memory representation with each step. It can capture both short-term and long-term dependencies in data, making it suitable for various sequential tasks.
+
+### Advantages of GRU:
+
+- **Simplicity:** GRU has a more straightforward architecture compared to LSTM, which can make it easier to train and understand.
+- **Efficiency:** Due to its simplified design, GRU may require less computational resources and training time compared to LSTM.
+- **Performance:** GRU often performs well on tasks that require modeling sequential dependencies.
+
+### Applications of GRU:
+GRU is used in similar applications to LSTM:
+
+- **Natural Language Processing:** GRU can be used for tasks like language modeling, machine translation, and sentiment analysis.
+- **Time Series Analysis:** GRU is suitable for predicting values in time series data, similar to LSTM.
+- **Speech Recognition:** GRU can be employed in speech recognition systems to understand and interpret spoken words.
+
+### Training and Hyperparameters:
+
+- Training a GRU involves providing sequential data during the forward pass and using backpropagation to adjust its parameters.
+- Common hyperparameters to tune include the number of GRU units, learning rate, and regularization techniques to prevent overfitting.
+
+### Limitations:
+- GRU, like LSTM, can still face challenges such as vanishing gradients and overfitting, particularly on complex tasks and small datasets.
+- Selecting the appropriate architecture and hyperparameters is crucial for achieving optimal performance.
+
+GRU is a versatile model that can be a powerful tool for various sequence modeling tasks. While it offers advantages like simplicity and efficiency, it's important to carefully tailor its design to the specific task and dataset at hand.

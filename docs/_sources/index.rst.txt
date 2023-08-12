@@ -32,6 +32,20 @@ LSTM Model
    :members:
    :undoc-members:
 
+====
+
+GRU Future Predictions
+======================
+.. automodule:: thronetrader.DL_algorithms.gru_future
+   :members:
+   :undoc-members:
+
+GRU Model
+=========
+.. automodule:: thronetrader.DL_algorithms.gru_model
+   :members:
+   :undoc-members:
+
 --------Machine Learning--------
 ================================
 Gradient Boosting

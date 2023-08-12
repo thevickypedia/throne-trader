@@ -1,25 +1,26 @@
 import numpy as np
 import pandas as pd
 
-from thronetrader.DL_algorithms import lstm_model
+from thronetrader.DL_algorithms import \
+    gru_model  # Assuming you have a similar module for GRU model
 from thronetrader.helper import squire
 
 
-class LSTMTransformer:
-    """LSTMTransformer object to predict future prices using Long short-term memory (LSTM) network.
+class GRUTransformer:
+    """GRUTransformer object to predict future prices using Gated Recurrent Unit (GRU) model.
 
-    >>> LSTMTransformer
+    >>> GRUTransformer
 
     See Also:
-        - Long short-term memory (LSTM) network is a recurrent neural network (RNN)
-        - LSTM is aimed to deal with the vanishing gradient problem present in traditional RNNs.
-        - | Its relative insensitivity to gap length is its advantage over other RNNs,
-          | hidden Markov models and other sequence learning methods.
+        - Gated Recurrent Unit (GRU) is a type of recurrent neural network (RNN)
+        - GRU is designed to capture sequential patterns and relationships in data.
+        - GRU has a more straightforward architecture compared to LSTM, which makes it easier to train and understand.
+        - Due to its simplified design, GRU may require less computational resources and training time compared to LSTM.
     """
 
     def __init__(self, symbol: str, epochs: int = 100, batch_size: int = 32,
                  years_to_train: int = 5, years_to_validate: int = 1):
-        """Download historical stock data and instantiate LSTMTransformer object.
+        """Download historical stock data and instantiate GRUTransformer object.
 
         Args:
             symbol: Stock ticker.
@@ -54,17 +55,17 @@ class LSTMTransformer:
         return squire.get_historical_data(self.symbol, years=self.validation_period, df=True)
 
     def generate_predictions(self) -> np.ndarray:
-        """Prepare the data, build the LSTM model, train the model and predict future stock prices.
+        """Prepare the data, build the GRU model, train the model and predict future stock prices.
 
         Returns:
             numpy.ndarray:
             Returns the predictions as a multidimensional, homogeneous array of fixed-size items.
         """
         # Prepare the data
-        x, y = lstm_model.prepare_data_lstm(self.historical_data)
+        x, y = gru_model.prepare_data_gru(self.historical_data)
 
-        # Build the LSTM model
-        model = lstm_model.build_lstm_model(input_shape=(x.shape[1], 1))
+        # Build the GRU model
+        model = gru_model.build_gru_model(input_shape=(x.shape[1], 1))
 
         # Train the model on the entire historical dataset
         model.fit(x, y, epochs=self.epochs, batch_size=self.batch_size, verbose=1)
@@ -72,7 +73,7 @@ class LSTMTransformer:
         # Use the trained model to predict future stock prices
         # evaluate the model's predictive capability in a realistic scenario where it encounters new, unseen data
         future_data = self.validation_dataset()
-        future_x, _ = lstm_model.prepare_data_lstm(future_data)
+        future_x, _ = gru_model.prepare_data_gru(future_data)
 
         # Make predictions for the future period
         return model.predict(future_x)
@@ -84,9 +85,9 @@ class LSTMTransformer:
             numpy.ndarray:
             Returns the inverse of scaling predictions as a multidimensional, homogeneous array of fixed-size items.
         """
-        lstm_model.scaler.fit(self.historical_data['Close'].values.reshape(-1, 1))
+        gru_model.scaler.fit(self.historical_data['Close'].values.reshape(-1, 1))
         future_predictions = self.generate_predictions()
-        return lstm_model.scaler.inverse_transform(future_predictions)
+        return gru_model.scaler.inverse_transform(future_predictions)
 
     def future_prices(self) -> pd.Series:
         """Get future predictions mapped to the future dates.
@@ -102,4 +103,4 @@ class LSTMTransformer:
 
 
 if __name__ == '__main__':
-    print(LSTMTransformer(symbol="GOOGL").future_prices())
+    print(GRUTransformer(symbol="GOOGL").future_prices())
