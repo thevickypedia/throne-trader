@@ -112,6 +112,18 @@ Moving Average Convergence/Divergence Indicator
    :members:
    :undoc-members:
 
+Squire
+======
+.. automodule:: thronetrader.helper.squire
+   :members:
+   :undoc-members:
+
+Logger
+======
+.. automodule:: thronetrader.helper.logger
+   :members:
+   :undoc-members:
+
 Relative Strength Index
 =======================
 .. automodule:: thronetrader.strategies.rsi

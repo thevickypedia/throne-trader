@@ -1,4 +1,4 @@
 from thronetrader.trader import (Predictions, RealTimeSignals,  # noqa: F401
                                  StrategicSignals)
 
-version = "0.3"
+version = "0.4"

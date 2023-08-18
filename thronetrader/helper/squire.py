@@ -1,21 +1,10 @@
 import logging
-import os
-import sys
 from datetime import datetime, timedelta
-from typing import List, NoReturn, Tuple, Union
+from typing import List, Tuple, Union
 
 import pandas as pd
 import yfinance as yf
-
-
-def block_print() -> NoReturn:
-    """Block print statements in console/terminal."""
-    sys.stdout = open(os.devnull, 'w')
-
-
-def release_print() -> NoReturn:
-    """Allow print statements to be displayed in console/terminal."""
-    sys.stdout = sys.__stdout__  # release print
+from blockstdout import BlockPrint
 
 
 def get_historical_data(symbol: str,
@@ -35,9 +24,8 @@ def get_historical_data(symbol: str,
     start = (datetime.now() - timedelta(days=years * 365)).strftime("%Y-%m-%d")
     end = datetime.now().strftime("%Y-%m-%d")
     try:
-        block_print()
-        stock_data = yf.download(symbol, start=start, end=end)
-        release_print()
+        with BlockPrint():
+            stock_data = yf.download(symbol, start=start, end=end)
     except Exception as error:
         raise ValueError(error)
     if stock_data.empty:
@@ -61,9 +49,8 @@ def get_bars(symbol: str, bar_count: int, days: int) -> pd.DataFrame:
         Returns the historical data as a DataFrame.
     """
     try:
-        block_print()
-        df = yf.download(symbol, period=f"{bar_count}d", interval=f"{days}d")
-        release_print()
+        with BlockPrint():
+            df = yf.download(symbol, period=f"{bar_count}d", interval=f"{days}d")
         if df.empty:
             raise ValueError("Empty dataframe was downloaded.")
     except Exception as error:

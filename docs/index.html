@@ -54,6 +54,8 @@
 <li class="toctree-l2"><a class="reference internal" href="README.html#components">Components</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#sample-notebooks">Sample Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#disclaimer">Disclaimer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#coding-standards">Coding Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#release-notes">Release Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#linting">Linting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#pypi-package">Pypi Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="README.html#runbook">Runbook</a></li>
@@ -1262,6 +1264,74 @@ last_value: the last value assigned or None</p>
 </dd></dl>
 
 </section>
+<section id="module-thronetrader.helper.squire">
+<span id="squire"></span><h1>Squire<a class="headerlink" href="#module-thronetrader.helper.squire" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.helper.squire.get_historical_data">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.helper.squire.</span></span><span class="sig-name descname"><span class="pre">get_historical_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">years</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">DataFrame</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#thronetrader.helper.squire.get_historical_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download historical stock data for a given symbol and date range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>years</strong> – Number of years.</p></li>
+<li><p><strong>df</strong> – Return data as a pandas DataFrame.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dataframe or Tuples of date and stock price in a list for the duration of years.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[List[Tuple[str, float]], pandas.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.helper.squire.get_bars">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.helper.squire.</span></span><span class="sig-name descname"><span class="pre">get_bars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar_count</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">days</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#thronetrader.helper.squire.get_bars" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download historical stock data for a given symbol and date range.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> – Stock ticker.</p></li>
+<li><p><strong>bar_count</strong> – Number of bars from yfinance.</p></li>
+<li><p><strong>days</strong> – Number of days to consider.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Returns the historical data as a DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.helper.squire.classify">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.helper.squire.</span></span><span class="sig-name descname"><span class="pre">classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stock_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#thronetrader.helper.squire.classify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates short term moving average, long term moving average to generate the signals.</p>
+</dd></dl>
+
+</section>
+<section id="module-thronetrader.helper.logger">
+<span id="logger"></span><h1>Logger<a class="headerlink" href="#module-thronetrader.helper.logger" title="Permalink to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="thronetrader.helper.logger.default_logger">
+<span class="sig-prename descclassname"><span class="pre">thronetrader.helper.logger.</span></span><span class="sig-name descname"><span class="pre">default_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Logger</span></span></span><a class="headerlink" href="#thronetrader.helper.logger.default_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a default console logger.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Logger object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>logging.Logger</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="module-thronetrader.strategies.rsi">
 <span id="relative-strength-index"></span><h1>Relative Strength Index<a class="headerlink" href="#module-thronetrader.strategies.rsi" title="Permalink to this heading">¶</a></h1>
 <dl class="py function">
@@ -1336,6 +1406,8 @@ last_value: the last value assigned or None</p>
 <li><a class="reference internal" href="#module-thronetrader.strategies.breakout">Breakout</a></li>
 <li><a class="reference internal" href="#module-thronetrader.strategies.crossover">Crossover</a></li>
 <li><a class="reference internal" href="#module-thronetrader.strategies.macd">Moving Average Convergence/Divergence Indicator</a></li>
+<li><a class="reference internal" href="#module-thronetrader.helper.squire">Squire</a></li>
+<li><a class="reference internal" href="#module-thronetrader.helper.logger">Logger</a></li>
 <li><a class="reference internal" href="#module-thronetrader.strategies.rsi">Relative Strength Index</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
