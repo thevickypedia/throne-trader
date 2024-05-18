@@ -1,23 +1,23 @@
 name: pypi-publish
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
   push:
     branches:
       - main
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   trial-by-pytest:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
@@ -34,6 +34,7 @@ jobs:
             echo "changes_in_folder=false" >> $GITHUB_ENV
             echo "No changes were found in package. Skipping pytest."
           fi
+        shell: bash
 
       # Runs when the event is a release or when there are changes in the package
       - name: Install dependencies and run pytest
@@ -42,31 +43,36 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r thronetrader/requirements.txt
+        shell: bash
       - name: Run pytest
         if: github.event_name == 'release' || env.changes_in_folder == 'true'
         run: |
           python -m pytest tests/
+        shell: bash
 
   vanguard:
     needs: trial-by-pytest
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
       - name: Install dependencies
         run: |
           pip install build twine
+        shell: bash
       - name: Create packages
         run: |
           python -m build
+        shell: bash
       - name: Run twine check
         run: |
           twine check dist/*
+        shell: bash
 
   coronation:
     if: github.event_name == 'release'
@@ -74,9 +80,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
 
@@ -88,3 +94,4 @@ jobs:
           pip install build twine
           python -m build
           twine upload dist/*.whl
+        shell: bash
